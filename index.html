@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Orçamento - CREVO Fine Art</title>
+    <title>Calculadora - Fine Art</title>
     
     <link rel="shortcut icon" href="favicon_claro.jpg" type="image/jpg">
     <link rel="apple-touch-icon" href="favicon_claro.jpg">
@@ -38,7 +38,7 @@
             --radius: 12px;
         }
 
-        /* --- SCROLLBAR ESTILO MAC/IOS (Resolve a borda sumindo no Windows/Desktop) --- */
+        /* --- SCROLLBAR ESTILO MAC/IOS --- */
         ::-webkit-scrollbar { width: 10px; height: 10px; }
         ::-webkit-scrollbar-track { background: transparent; margin: 12px; }
         ::-webkit-scrollbar-thumb { background: #D1D1D6; border-radius: 10px; border: 3px solid var(--card-bg); }
@@ -53,7 +53,7 @@
 
         .container { max-width: 1000px; margin: 0 auto; }
 
-        /* --- FORMULÁRIOS E INPUTS (NATIVO iOS) --- */
+        /* --- FORMULÁRIOS E INPUTS --- */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
         .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
         .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px; }
@@ -76,7 +76,6 @@
             padding-right: 40px; cursor: pointer;
         }
 
-        /* Checkbox Nativo iOS */
         .checkbox-group { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
         input[type="checkbox"] {
             -webkit-appearance: auto;
@@ -85,7 +84,6 @@
             margin: 0; padding: 0; min-height: auto;
         }
 
-        /* Helpers de Largura Estrita */
         .ddi-wrapper { display: flex; gap: 8px; width: 100%; }
         .ddi-select { width: 105px !important; flex-shrink: 0; padding-left: 10px; padding-right: 32px; }
         .ddi-input { flex: 1; min-width: 0; }
@@ -113,7 +111,7 @@
         .btn-icon:hover { background: #E5E5EA; }
         .btn-icon ion-icon { font-size: 20px; pointer-events: none; }
 
-        /* --- MODAIS E CARDS (INSET GROUPED) --- */
+        /* --- MODAIS E CARDS --- */
         .section-box { background: var(--card-bg); padding: 24px; border-radius: var(--radius); margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
         .item-card { background: #FAFAFC; border: 1px solid var(--border-color); padding: 20px; border-radius: 12px; margin-bottom: 16px; }
         .item-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color); }
@@ -158,27 +156,44 @@
         .logo-btn { cursor: pointer; transition: transform 0.2s; border-radius: 12px; }
         .logo-btn:hover { transform: scale(1.04); }
 
-        /* Categorias Botões Nativos */
+        /* Categorias Botões Nativos e Filtros */
         .cat-tag { padding: 10px 16px; border-radius: 10px; border: 1px solid var(--border-color); cursor: pointer; font-size: 0.95rem; font-weight: 700; transition: all 0.2s; font-family: var(--font-body); display: inline-flex; align-items: center; justify-content: center; min-height: 44px; }
         .cat-tag:hover { filter: brightness(0.95); transform: translateY(-1px); }
 
+        .scroll-arrow { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 50%; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; cursor: pointer; color: var(--text-main); flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: background 0.2s; }
+        .scroll-arrow:hover { background: var(--bg-color); }
+
         .validade-text { margin-top: 6px; color: var(--text-muted); font-size: 0.9rem; }
 
-        /* Barra de Busca e Importar na mesma linha */
         .backup-tools { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; background: #EBF5FF; border: 1px solid #BBDEFB; padding: 20px; border-radius: var(--radius); margin-bottom: 24px;}
         .backup-tools > span { flex-basis: 100%; margin-bottom: 16px; font-size: 0.9rem; color: #1565C0; }
-        .backup-tools-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap;}
+        .backup-tools-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; flex: 1; }
         
         .search-container { position: relative; max-width: 350px; flex-grow: 1; min-width: 250px;}
         .search-container input { padding-right: 40px; border-radius: 12px; border-color: #BBDEFB; }
         .search-clear { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #E5E5EA; border: none; border-radius: 50%; width: 24px; height: 24px; display: none; align-items: center; justify-content: center; cursor: pointer; color: var(--text-main); }
         .search-container input:not(:placeholder-shown) + .search-clear { display: flex; }
 
-        /* --- MOBILE UI (APPLE NATIVE FEEL) --- */
+        /* --- COLLAPSIBLES E IOS LIST --- */
+        .header-collapsible { display: flex; justify-content: space-between; align-items: center; padding: 16px; background: #fff; border-radius: 12px; cursor: pointer; border: 1px solid var(--border-color); transition: background 0.2s; }
+        .header-collapsible:hover { background: var(--bg-color); }
+        
+        .ios-list { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); }
+        .ios-list-item { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border-color); cursor: pointer; transition: background 0.2s; }
+        .ios-list-item:last-child { border-bottom: none; }
+        .ios-list-item:hover { background: var(--bg-color); }
+        .ios-list-title { font-weight: 600; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;}
+        .ios-list-actions { display: flex; align-items: center; gap: 12px; }
+        
+        .ios-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--border-color); margin-bottom: 20px; }
+        .ios-back-btn { background: none; border: none; color: #007AFF; font-size: 1.1rem; display: flex; align-items: center; gap: 4px; cursor: pointer; font-weight: 500; }
+
+        /* --- MOBILE UI --- */
         @media (max-width: 768px) {
-            body { padding: 12px; }
+            body { padding: 30px 20px 50px 20px; } 
             h1 { font-size: 1.6rem; letter-spacing: -0.5px; }
             .logo-btn { max-width: 80px !important; }
+            .no-mobile { display: none !important; }
 
             .section-box, .item-card { padding: 20px; border-radius: 16px; margin-bottom: 16px; }
             .grid-2, .grid-3, .grid-4 { display: flex; flex-direction: column; gap: 16px; }
@@ -197,22 +212,22 @@
             .item-actions .btn { width: 100%; justify-content: center; }
 
             .totals-box { width: 100%; padding: 24px; border-radius: 16px; }
-            .actions-bottom { flex-direction: column; gap: 12px; }
+            .actions-bottom { flex-direction: column; gap: 12px; padding-bottom: 30px; } 
             .actions-bottom .btn { width: 100%; justify-content: center; padding: 16px; font-size: 1.1rem; }
             
             .modal-content { padding: 20px; border-radius: 24px; margin: 10px; }
             .table-responsive { border-radius: 12px; margin-top: 10px; }
 
-            /* Botoes em 2 linhas centralizados */
             .backup-tools-actions { justify-content: center; width: 100%; }
             .backup-tools-actions .btn { flex: 1 1 calc(50% - 10px); min-width: 130px; justify-content: center; }
             .search-container { width: 100%; max-width: 100%; margin-top: 5px; }
         }
 
-        /* --- MODO IMPRESSÃO (A4 1 PÁGINA) --- */
+        /* --- MODO IMPRESSÃO --- */
         .print-only { display: none; }
         @media print {
-            body { background: #fff; padding: 0; font-size: 11px; }
+            @page { margin: 0; } 
+            body { background: #fff; padding: 0; margin: 1cm; font-size: 11px; }
             .container { max-width: 100%; border: none; background: #fff; }
             .no-print, button, .item-card, .modal-overlay, .actions-bottom, .section-box { display: none !important; }
             .print-only { display: block; }
@@ -222,7 +237,7 @@
             .print-info { text-align: right; font-size: 10px; color: var(--text-muted); }
             .print-info strong { color: var(--text-main); font-size: 12px; }
             
-            h2 { font-size: 14px; margin-bottom: 8px; text-transform: uppercase; font-family: var(--font-heading); font-weight: bold;}
+            h2 { font-size: 14px; margin-bottom: 8px; font-weight: bold;}
             p { margin-bottom: 3px; }
             div[style*="margin-bottom: 30px"] { margin-bottom: 12px !important; }
             
@@ -266,7 +281,7 @@
             <button class="btn" style="width: 100%; padding: 14px; font-size: 1.1rem; border-radius: 14px;" onclick="fazerLogin()">Entrar</button>
         </div>
 
-        <button id="btn-faceid-login" class="btn btn-outline" style="width: 100%; padding: 14px; font-size: 1rem; border-radius: 14px; margin-top: 15px; display: none;" onclick="loginBiometria()"><ion-icon name="finger-print-outline"></ion-icon> Entrar com Biometria</button>
+        <button id="btn-faceid-login" class="btn btn-outline" style="width: 100%; padding: 14px; font-size: 1rem; border-radius: 14px; margin-top: 15px; display: none;" onclick="loginBiometria(false)"><ion-icon name="finger-print-outline"></ion-icon> Entrar com Biometria</button>
 
         <p id="login-error" style="color: var(--danger-color); margin-top: 20px; font-size: 0.95rem; display: none; font-weight: 600;">Usuário ou senha incorretos.</p>
     </div>
@@ -277,9 +292,12 @@
         <h2 style="font-weight: 800; margin-bottom: 12px; text-transform: none;">Acesso Restrito</h2>
         <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px;">Autenticação necessária para editar regras de negócio e usuários.</p>
         <input type="password" id="admin-pwd" placeholder="Senha Administrador" style="margin-bottom: 24px; text-align: center;" onkeyup="if(event.key === 'Enter') checkPwd()">
-        <div style="display: flex; gap: 12px; justify-content: center;">
-            <button class="btn btn-outline" style="flex: 1;" onclick="fecharModalPwd()">Cancelar</button>
-            <button class="btn" style="flex: 1;" onclick="checkPwd()">Acessar</button>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-direction: column;">
+            <div style="display: flex; gap: 12px;">
+                <button class="btn btn-outline" style="flex: 1;" onclick="fecharModalPwd()">Cancelar</button>
+                <button class="btn" style="flex: 1;" onclick="checkPwd()">Acessar</button>
+            </div>
+            <button id="btn-faceid-admin" class="btn btn-outline" style="width: 100%; padding: 14px; font-size: 1rem; border-radius: 10px; display: none;" onclick="loginBiometria(true)"><ion-icon name="finger-print-outline"></ion-icon> Biometria</button>
         </div>
     </div>
 </div>
@@ -303,9 +321,9 @@
             <div class="backup-tools">
                 <span><strong>Atenção:</strong> Ao salvar aqui, a mudança vai apenas para o dispositivo. Para atualizar a nuvem, faça o <strong>Backup JSON</strong> e suba no GitHub!</span>
                 <div class="backup-tools-actions">
-                    <button class="btn btn-dark" onclick="exportarPrecos()"><ion-icon name="download-outline"></ion-icon> Baixar Backup (Nuvem)</button>
+                    <button class="btn btn-dark" style="flex: 1;" onclick="exportarPrecos()"><ion-icon name="cloud-download-outline"></ion-icon> Baixar Backup</button>
                     <input type="file" id="import-prices" style="display:none;" onchange="importarPrecos(event)" accept=".json">
-                    <button class="btn btn-outline" style="border-color: #1565C0; color: #1565C0; background: #fff;" onclick="document.getElementById('import-prices').click()"><ion-icon name="cloud-upload-outline"></ion-icon> Importar</button>
+                    <button class="btn btn-outline" style="flex: 1; border-color: #1565C0; color: #1565C0; background: #fff;" onclick="$('import-prices').click()"><ion-icon name="cloud-upload-outline"></ion-icon> Importar</button>
                     <button class="btn" style="background: var(--success-color);" onclick="salvarPrecos()"><ion-icon name="save-outline"></ion-icon> Salvar Localmente</button>
                 </div>
             </div>
@@ -402,115 +420,144 @@
             <button onclick="fecharModalClientes()" class="close-btn"><ion-icon name="close-outline"></ion-icon></button>
         </div>
         
-        <div style="background: var(--bg-color); padding: 25px; border-radius: 20px; margin-bottom: 24px; flex-shrink: 0;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
-                <h3 id="modal-client-title" style="font-size: 1.25rem; margin: 0; text-transform: none;">Adicionar novo cliente</h3>
-                <div style="display: flex; align-items: center; gap: 10px; background: #fff; padding: 6px 16px; border-radius: 12px; border: 1px solid var(--border-color);">
-                    <input type="checkbox" id="modal-cliente-fixo">
-                    <label for="modal-cliente-fixo" style="margin:0; cursor:pointer; font-weight: 600;">Cliente Fixo ★</label>
-                </div>
+        <div id="crm-list-view" style="flex-grow: 1; display: flex; flex-direction: column;">
+            <div class="header-collapsible" onclick="toggleCollapsible('form-add-cliente')" style="margin-bottom: 12px;">
+                <h3 style="font-size: 1.15rem; margin: 0; text-transform: none; display: flex; align-items: center; gap: 8px;"><ion-icon name="person-add-outline"></ion-icon> Adicionar novo cliente</h3>
+                <ion-icon name="chevron-down-outline" id="icon-form-add-cliente"></ion-icon>
             </div>
-            <input type="hidden" id="modal-cliente-id">
             
-            <div class="grid-3">
-                <div><label>Nome *</label><input type="text" id="modal-cliente-nome" placeholder="Ex: Bud Silva"></div>
-                <div><label>E-mail</label><input type="email" id="modal-cliente-email" placeholder="email@gmail.com"></div>
-                <div>
-                    <label>Telefone</label>
-                    <div class="ddi-wrapper">
-                        <select id="modal-cliente-ddi" class="ddi-select" onchange="aplicarMascaraTelefone({target: document.getElementById('modal-cliente-tel')})">
-                            <option value="+55">+55 BR</option><option value="+1">+1 US/CA</option><option value="+351">+351 PT</option><option value="+44">+44 GB</option><option value="+34">+34 ES</option><option value="+39">+39 IT</option><option value="+33">+33 FR</option><option value="+49">+49 DE</option><option value="+54">+54 AR</option><option value="+598">+598 UY</option><option value="+56">+56 CL</option><option value="+52">+52 MX</option>
-                        </select>
-                        <input type="text" id="modal-cliente-tel" class="ddi-input" placeholder="(00) 00000-0000" maxlength="20" oninput="aplicarMascaraTelefone(event)" onpaste="handlePasteTelefone(event)">
+            <div id="form-add-cliente" style="display: none; background: var(--bg-color); padding: 25px; border-radius: 20px; margin-bottom: 24px; flex-shrink: 0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                    <h3 id="modal-client-title" style="font-size: 1.25rem; margin: 0; text-transform: none;">Preencha os dados</h3>
+                    <div style="display: flex; align-items: center; gap: 10px; background: #fff; padding: 6px 16px; border-radius: 12px; border: 1px solid var(--border-color);">
+                        <input type="checkbox" id="modal-cliente-fixo">
+                        <label for="modal-cliente-fixo" style="margin:0; cursor:pointer; font-weight: 600;">Cliente Fixo ★</label>
                     </div>
                 </div>
-            </div>
-            <div class="grid-3">
-                <div><label>CPF / CNPJ</label><input type="text" id="modal-cliente-doc" placeholder="000.000.000-00" maxlength="18" oninput="aplicarMascaraDocumento(event)"></div>
-                <div>
-                    <label style="display:flex; align-items:center; gap: 8px; position: relative;">CEP 
-                        <button type="button" class="btn-icon" style="background:#fff; border:1px solid var(--border-color); padding: 4px;" onclick="toggleFreteLinks(event, 'frete-popup-modal')"><ion-icon name="cube-outline" style="font-size:16px;"></ion-icon></button>
-                        <div id="frete-popup-modal" class="frete-dropdown">
-                            <a href="https://melhorenvio.com.br/calculadora" target="_blank">Melhor Envio</a>
-                            <a href="https://www2.correios.com.br/sistemas/precosPrazos/" target="_blank">Correios</a>
-                            <a href="https://kangu.com.br/calculadora-de-frete/" target="_blank">Kangu</a>
+                <input type="hidden" id="modal-cliente-id">
+                
+                <div class="grid-3">
+                    <div><label>Nome *</label><input type="text" id="modal-cliente-nome" placeholder="Ex: Bud Silva"></div>
+                    <div><label>E-mail</label><input type="email" id="modal-cliente-email" placeholder="email@gmail.com"></div>
+                    <div>
+                        <label>Telefone</label>
+                        <div class="ddi-wrapper">
+                            <select id="modal-cliente-ddi" class="ddi-select" onchange="aplicarMascaraTelefone({target: $('modal-cliente-tel')})">
+                                <option value="+55">+55 BR</option><option value="+1">+1 US/CA</option><option value="+351">+351 PT</option><option value="+44">+44 GB</option><option value="+34">+34 ES</option><option value="+39">+39 IT</option><option value="+33">+33 FR</option><option value="+49">+49 DE</option><option value="+54">+54 AR</option><option value="+598">+598 UY</option><option value="+56">+56 CL</option><option value="+52">+52 MX</option>
+                            </select>
+                            <input type="text" id="modal-cliente-tel" class="ddi-input" placeholder="(00) 00000-0000" maxlength="20" oninput="aplicarMascaraTelefone(event)" onpaste="handlePasteTelefone(event)">
                         </div>
-                    </label>
-                    <input type="text" id="modal-cliente-cep" placeholder="00000-000" maxlength="9" oninput="aplicarMascaraCEP(event, 'modal-cliente')">
-                </div>
-                <div><label>Cidade / UF</label><input type="text" id="modal-cliente-cidade" placeholder="Ex: São Paulo / SP"></div>
-            </div>
-            <div class="grid-2" style="grid-template-columns: 2fr 1fr;">
-                <div><label>Endereço</label><input type="text" id="modal-cliente-endereco" placeholder="Ex: Rua das Flores, 123"></div>
-                <div>
-                    <label>Categoria</label>
-                    <div style="display:flex; gap:8px;">
-                        <select id="modal-cliente-cat" style="flex: 1; min-width: 0;"><option value="">Sem categoria</option></select>
-                        <button type="button" class="btn btn-outline" style="padding: 0 16px;" onclick="abrirModalCategorias()"><ion-icon name="settings-outline" style="margin:0;"></ion-icon></button>
                     </div>
                 </div>
-            </div>
-            <div class="grid-2" style="margin-top: 16px;">
-                <div>
-                    <label>Instagram</label>
-                    <div style="display: flex;">
-                        <span style="padding: 14px 16px; background: #E5E5EA; border: 1px solid var(--border-color); border-right: none; border-radius: 10px 0 0 10px; color: #8E8E93; font-weight: 800; display: flex; align-items: center;">@</span>
-                        <input type="text" id="modal-cliente-ig" style="flex: 1; min-width: 0; border-radius: 0 10px 10px 0;" placeholder="usuario" onblur="extrairInstagram(this)">
+                <div class="grid-3">
+                    <div><label>CPF / CNPJ</label><input type="text" id="modal-cliente-doc" placeholder="000.000.000-00" maxlength="18" oninput="aplicarMascaraDocumento(event)"></div>
+                    <div>
+                        <label style="display:flex; align-items:center; gap: 8px; position: relative;">CEP 
+                            <button type="button" class="btn-icon" style="background:#fff; border:1px solid var(--border-color); padding: 4px;" onclick="toggleFreteLinks(event, 'frete-popup-modal')"><ion-icon name="cube-outline" style="font-size:16px;"></ion-icon></button>
+                            <div id="frete-popup-modal" class="frete-dropdown">
+                                <a href="https://melhorenvio.com.br/calculadora" target="_blank">Melhor Envio</a>
+                                <a href="https://www2.correios.com.br/sistemas/precosPrazos/" target="_blank">Correios</a>
+                                <a href="https://kangu.com.br/calculadora-de-frete/" target="_blank">Kangu</a>
+                            </div>
+                        </label>
+                        <input type="text" id="modal-cliente-cep" placeholder="00000-000" maxlength="9" oninput="aplicarMascaraCEP(event, 'modal-cliente')">
+                    </div>
+                    <div><label>Cidade / UF</label><input type="text" id="modal-cliente-cidade" placeholder="Ex: São Paulo / SP"></div>
+                </div>
+                <div class="grid-2" style="grid-template-columns: 2fr 1fr;">
+                    <div><label>Endereço</label><input type="text" id="modal-cliente-endereco" placeholder="Ex: Rua das Flores, 123"></div>
+                    <div>
+                        <label>Categoria</label>
+                        <div style="display:flex; gap:8px;">
+                            <select id="modal-cliente-cat" style="flex: 1; min-width: 0;"><option value="">Sem categoria</option></select>
+                            <button type="button" class="btn btn-outline" style="padding: 0 16px;" onclick="abrirModalCategorias()"><ion-icon name="settings-outline" style="margin:0;"></ion-icon></button>
+                        </div>
                     </div>
                 </div>
-                <div><label>Observação <small>(Interno)</small></label><input type="text" id="modal-cliente-obs" placeholder="Detalhes internos..."></div>
+                <div class="grid-2" style="margin-top: 16px;">
+                    <div>
+                        <label>Instagram</label>
+                        <div style="display: flex;">
+                            <span style="padding: 14px 16px; background: #E5E5EA; border: 1px solid var(--border-color); border-right: none; border-radius: 10px 0 0 10px; color: #8E8E93; font-weight: 800; display: flex; align-items: center;">@</span>
+                            <input type="text" id="modal-cliente-ig" style="flex: 1; min-width: 0; border-radius: 0 10px 10px 0;" placeholder="usuario" onblur="extrairInstagram(this)">
+                        </div>
+                    </div>
+                    <div><label>Observação <small>(Interno)</small></label><input type="text" id="modal-cliente-obs" placeholder="Detalhes internos..."></div>
+                </div>
+
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; margin-top: 24px;">
+                    <button class="btn btn-outline" id="btn-cancel-edit-client" style="display:none;" onclick="cancelarEdicaoClienteModal()">Cancelar</button>
+                    <button class="btn" onclick="salvarClienteModal()"><ion-icon name="save-outline"></ion-icon> Salvar Localmente</button>
+                </div>
             </div>
 
-            <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; margin-top: 24px;">
-                <button class="btn btn-danger" id="btn-delete-edit-client" style="display:none;" onclick="apagarClienteSendoEditado()"><ion-icon name="trash-outline"></ion-icon> Apagar</button>
-                <button class="btn btn-outline" id="btn-cancel-edit-client" style="display:none;" onclick="cancelarEdicaoClienteModal()">Cancelar</button>
-                <button class="btn" onclick="salvarClienteModal()"><ion-icon name="save-outline"></ion-icon> Salvar Localmente</button>
+            <div class="header-collapsible" onclick="toggleCollapsible('form-backup-cliente')" style="margin-bottom: 16px;">
+                <h3 style="font-size: 1.15rem; margin: 0; text-transform: none; display: flex; align-items: center; gap: 8px;"><ion-icon name="cloud-outline"></ion-icon> Backup & Ferramentas</h3>
+                <ion-icon name="chevron-down-outline" id="icon-form-backup-cliente"></ion-icon>
+            </div>
+
+            <div id="form-backup-cliente" class="backup-tools" style="display: none;">
+                <span>Atualize o GitHub após salvar mudanças locais.</span>
+                <div class="backup-tools-actions">
+                    <button class="btn btn-dark" style="flex: 1;" onclick="exportarClientes('json')"><ion-icon name="cloud-download-outline"></ion-icon> Backup JSON</button>
+                    <button class="btn btn-outline" style="flex: 1; border-color: #1565C0; color: #1565C0; background: transparent;" onclick="exportarClientes('csv')">CSV</button>
+                    <input type="file" id="import-client" style="display:none;" onchange="importarClientes(event)" accept=".json,.csv">
+                    <button class="btn btn-outline" style="flex: 1; border-color: #1565C0; color: #1565C0; background: #fff;" onclick="$('import-client').click()"><ion-icon name="cloud-upload-outline"></ion-icon> Importar</button>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+                <div class="search-container">
+                    <input type="text" id="busca-cliente" placeholder="Buscar cliente..." oninput="renderListClientes(this.value)" required>
+                    <button class="search-clear" type="button" onclick="$('busca-cliente').value=''; renderListClientes();"><ion-icon name="close-outline" style="font-size:18px;"></ion-icon></button>
+                </div>
+            </div>
+
+            <div style="position: relative; display: flex; align-items: center; margin-bottom: 16px;">
+                <button class="scroll-arrow no-mobile" onclick="$('category-filter-container').scrollBy({left: -200, behavior: 'smooth'})" style="margin-right: 8px;"><ion-icon name="chevron-back-outline"></ion-icon></button>
+                <div id="category-filter-container" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; white-space: nowrap; scrollbar-width: none; flex-grow: 1; min-height: 44px; align-items: center;"></div>
+                <button class="scroll-arrow no-mobile" onclick="$('category-filter-container').scrollBy({left: 200, behavior: 'smooth'})" style="margin-left: 8px;"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+            </div>
+            
+            <div style="flex-grow: 1; overflow-y: auto; padding-bottom: 20px;">
+                <div id="client-list-container" class="ios-list"></div>
+            </div>
+            
+            <div class="modal-footer-fixed" style="border-radius: 0 0 20px 20px; flex-shrink: 0;">
+                <button class="btn btn-outline btn-small" style="color: var(--danger-color); border-color: var(--danger-color);" onclick="limparTodosClientesAdmin()">Apagar todos</button>
+                <div style="font-weight: 600;">Total: <strong id="total-clientes-footer" style="color: var(--text-main); font-size: 1.2rem;">0</strong></div>
             </div>
         </div>
 
-        <div class="backup-tools">
-            <span>Atualize o GitHub após salvar mudanças locais.</span>
-            <div class="backup-tools-actions">
-                <button class="btn btn-dark" onclick="exportarClientes('json')"><ion-icon name="download-outline"></ion-icon> JSON (Nuvem)</button>
-                <button class="btn btn-outline" style="border-color: #1565C0; color: #1565C0; background: transparent;" onclick="exportarClientes('csv')">CSV</button>
-                <input type="file" id="import-client" style="display:none;" onchange="importarClientes(event)" accept=".json,.csv">
-                <button class="btn btn-outline" style="border-color: #1565C0; color: #1565C0; background: #fff;" onclick="document.getElementById('import-client').click()"><ion-icon name="cloud-upload-outline"></ion-icon> Importar</button>
+        <div id="crm-detail-view" style="display: none; flex-grow: 1; flex-direction: column;">
+            <div class="ios-header">
+                <button class="ios-back-btn" onclick="fecharDetalhesCliente()"><ion-icon name="chevron-back-outline"></ion-icon> Clientes</button>
+                <h3 id="detail-client-name" style="margin: 0 auto; text-transform: none; font-size: 1.2rem; transform: translateX(-20px); font-weight: 700;"></h3>
             </div>
-            <div class="search-container">
-                <input type="text" id="busca-cliente" placeholder="Buscar cliente..." oninput="renderListClientes(this.value)" required>
-                <button class="search-clear" type="button" onclick="document.getElementById('busca-cliente').value=''; renderListClientes();"><ion-icon name="close-outline" style="font-size:18px;"></ion-icon></button>
-            </div>
-        </div>
-
-        <div id="category-filter-container" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 16px; white-space: nowrap; scrollbar-width: none; flex-shrink: 0; min-height: 44px; align-items: center;"></div>
-        
-        <div class="table-responsive" style="flex-grow: 1; min-height: 250px;">
-            <table class="resume-table" style="border-radius: 12px; overflow: hidden;">
-                <thead><tr><th>Cliente Info</th><th>Documento / Local</th><th>Contato</th><th class="actions-cell">Ações</th></tr></thead>
-                <tbody id="client-list-container"></tbody>
-            </table>
-        </div>
-        
-        <div class="modal-footer-fixed" style="border-radius: 0 0 20px 20px;">
-            <button class="btn btn-outline btn-small" style="color: var(--danger-color); border-color: var(--danger-color);" onclick="limparTodosClientesAdmin()">Apagar todos</button>
-            <div style="font-weight: 600;">Total: <strong id="total-clientes-footer" style="color: var(--text-main); font-size: 1.2rem;">0</strong></div>
+            <div id="crm-detail-content" style="flex-grow: 1; overflow-y: auto;"></div>
         </div>
     </div>
 </div>
 
 <div id="quotes-modal" class="modal-overlay" style="display: none;">
-    <div class="modal-content" style="max-width: 800px;">
+    <div class="modal-content">
         <div class="modal-header">
-            <h2 style="text-transform: none;">Mensagens de Rodapé</h2>
+            <h2 style="display:flex; align-items:center; gap:15px; text-transform: none;"><ion-icon name="chatbubble-ellipses-outline" style="font-size: 28px;"></ion-icon> Mensagens de Rodapé</h2>
             <button onclick="fecharModalFrases()" class="close-btn"><ion-icon name="close-outline"></ion-icon></button>
         </div>
-        <div class="modal-body">
+        
+        <div id="frases-list-view" style="flex-grow: 1; display: flex; flex-direction: column;">
             
-            <div style="background: var(--bg-color); padding: 25px; border-radius: 16px; margin-bottom: 24px;">
+            <div class="header-collapsible" onclick="toggleCollapsible('form-add-frase')" style="margin-bottom: 12px;">
+                <h3 style="font-size: 1.15rem; margin: 0; text-transform: none; display: flex; align-items: center; gap: 8px;"><ion-icon name="add-circle-outline"></ion-icon> Adicionar nova frase</h3>
+                <ion-icon name="chevron-down-outline" id="icon-form-add-frase"></ion-icon>
+            </div>
+
+            <div id="form-add-frase" style="display: none; background: var(--bg-color); padding: 25px; border-radius: 20px; margin-bottom: 24px; flex-shrink: 0;">
                 <h3 id="modal-frase-title" style="font-size: 1.25rem; margin-bottom: 16px; text-transform: none;">Nova Frase</h3>
                 <input type="hidden" id="modal-frase-id">
                 <div class="grid-2">
-                    <div style="grid-column: span 2;"><label>Texto (sem aspas)</label><textarea id="nova-frase-texto" rows="2"></textarea></div>
+                    <div style="grid-column: span 2;"><label>Texto (sem aspas)</label><input type="text" id="nova-frase-texto"></div>
                     <div><label>Autor</label><input type="text" id="nova-frase-autor"></div>
                     <div style="display: flex; gap: 12px; align-items: flex-end; justify-content: flex-end;">
                         <button class="btn btn-outline" id="btn-cancel-edit-frase" style="display:none;" onclick="cancelarEdicaoFrase()">Cancelar</button>
@@ -519,22 +566,34 @@
                 </div>
             </div>
 
-            <div class="backup-tools">
+            <div class="header-collapsible" onclick="toggleCollapsible('form-backup-frase')" style="margin-bottom: 16px;">
+                <h3 style="font-size: 1.15rem; margin: 0; text-transform: none; display: flex; align-items: center; gap: 8px;"><ion-icon name="cloud-outline"></ion-icon> Backup & Ferramentas</h3>
+                <ion-icon name="chevron-down-outline" id="icon-form-backup-frase"></ion-icon>
+            </div>
+
+            <div id="form-backup-frase" class="backup-tools" style="display: none;">
                 <span>Grave no GitHub para sincronizar em outros aparelhos.</span>
                 <div class="backup-tools-actions">
-                    <button class="btn btn-dark" onclick="exportarFrases()"><ion-icon name="download-outline"></ion-icon> Baixar Backup (Nuvem)</button>
+                    <button class="btn btn-dark" style="flex: 1;" onclick="exportarFrases()"><ion-icon name="cloud-download-outline"></ion-icon> Backup JSON</button>
                     <input type="file" id="import-quotes" style="display:none;" onchange="importarFrases(event)" accept=".json">
-                    <button class="btn btn-outline" style="border-color: #1565C0; color: #1565C0; background: #fff;" onclick="document.getElementById('import-quotes').click()"><ion-icon name="cloud-upload-outline"></ion-icon> Importar</button>
+                    <button class="btn btn-outline" style="flex: 1; border-color: #1565C0; color: #1565C0; background: #fff;" onclick="$('import-quotes').click()"><ion-icon name="cloud-upload-outline"></ion-icon> Importar</button>
                 </div>
             </div>
 
-            <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
-                <table class="resume-table">
-                    <thead><tr><th style="width: 80%;">Frase</th><th class="actions-cell">Ações</th></tr></thead>
-                    <tbody id="quotes-list-body"></tbody>
-                </table>
+            <div style="flex-grow: 1; overflow-y: auto; padding-bottom: 20px;">
+                <div id="quotes-list-container" class="ios-list"></div>
             </div>
+            
         </div>
+
+        <div id="frases-detail-view" style="display: none; flex-grow: 1; flex-direction: column;">
+            <div class="ios-header">
+                <button class="ios-back-btn" onclick="fecharDetalhesFrase()"><ion-icon name="chevron-back-outline"></ion-icon> Frases</button>
+                <h3 id="detail-frase-title" style="margin: 0 auto; text-transform: none; font-size: 1.2rem; transform: translateX(-20px); font-weight: 700;"></h3>
+            </div>
+            <div id="frases-detail-content" style="flex-grow: 1; overflow-y: auto;"></div>
+        </div>
+
     </div>
 </div>
 
@@ -542,8 +601,8 @@
 
     <div class="no-print" style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center;">
         <div>
-            <h1>Orçamento</h1>
-            <p style="color: var(--text-muted); font-size: 1.1rem; font-weight: 500;">Geração de cotação - Fine Art & Canvas</p>
+            <h1 style="font-family: 'TAN-Buster', sans-serif; text-transform: uppercase;">CALCULADORA FINE ART</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem; font-weight: 500;">Cotação de impressão - Fine art & Canvas</p>
         </div>
         <img src="CREVO_Logo_2025.png" alt="CREVO Studio" class="logo-btn" style="max-width: 100px;" onerror="this.style.display='none'" onclick="abrirModalPwd()" title="Área Restrita">
     </div>
@@ -565,7 +624,7 @@
 
     <div class="print-only" style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end;">
         <div>
-            <h2>Orçamento de impressão</h2>
+            <h2 style="font-family: 'TAN-Buster', sans-serif; text-transform: uppercase;">IMPRESSÃO FINE ART</h2>
             <p><strong>Cliente:</strong> <span id="print-cliente-nome"></span></p>
             <p><strong>E-mail:</strong> <span id="print-cliente-email"></span></p>
             <p><strong>Telefone:</strong> <span id="print-cliente-tel"></span></p>
@@ -598,7 +657,7 @@
             <div>
                 <label>Telefone</label>
                 <div class="ddi-wrapper">
-                    <select id="cliente-ddi" class="ddi-select" onchange="syncClientData(); aplicarMascaraTelefone({target: document.getElementById('cliente-tel')})">
+                    <select id="cliente-ddi" class="ddi-select" onchange="syncClientData(); aplicarMascaraTelefone({target: $('cliente-tel')})">
                         <option value="+55">+55 BR</option><option value="+1">+1 US/CA</option><option value="+351">+351 PT</option><option value="+44">+44 GB</option><option value="+34">+34 ES</option><option value="+39">+39 IT</option><option value="+33">+33 FR</option><option value="+49">+49 DE</option><option value="+54">+54 AR</option><option value="+598">+598 UY</option><option value="+56">+56 CL</option><option value="+52">+52 MX</option>
                     </select>
                     <input type="text" id="cliente-tel" class="ddi-input" placeholder="(00) 00000-0000" maxlength="20" oninput="aplicarMascaraTelefone(event)" onpaste="handlePasteTelefone(event)">
@@ -705,6 +764,9 @@
 </div>
 
 <script>
+    // --- SMART SELECTOR ---
+    const $ = id => document.getElementById(id);
+
     // --- DADOS INICIAIS E DBs ---
     const defaultPrices = {
         moldura: 0.02, markup: 1.8038,
@@ -738,65 +800,81 @@
     let usuariosDB = JSON.parse(localStorage.getItem('crevo_usuarios')) || defaultUsers;
     let currentCategoryFilter = 'Todos';
 
-    // --- INICIALIZAÇÃO E BIOMETRIA ---
-    window.addEventListener('DOMContentLoaded', () => {
-        if(sessionStorage.getItem('crevo_logged_in') === 'true') {
-            document.getElementById('login-overlay').style.display = 'none';
-        }
-        
-        if(window.PublicKeyCredential && localStorage.getItem('crevo_biometria_id')) {
-            document.getElementById('btn-faceid-login').style.display = 'inline-flex';
-        }
+    // --- BIOMETRIA HELPERS (Base64URL Seguro) ---
+    const b64uEncode = buffer => btoa(String.fromCharCode(...new Uint8Array(buffer))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    const b64uDecode = str => {
+        const padding = '='.repeat((4 - str.length % 4) % 4);
+        const base64 = (str + padding).replace(/-/g, '+').replace(/_/g, '/');
+        const rawData = atob(base64);
+        const buffer = new Uint8Array(rawData.length);
+        for (let i = 0; i < rawData.length; ++i) buffer[i] = rawData.charCodeAt(i);
+        return buffer;
+    };
 
+    // --- INICIALIZAÇÃO ---
+    window.addEventListener('DOMContentLoaded', () => {
+        if(sessionStorage.getItem('crevo_logged_in') === 'true') $('login-overlay').style.display = 'none';
+        if(window.PublicKeyCredential && localStorage.getItem('crevo_biometria_id')) {
+            $('btn-faceid-login').style.display = 'inline-flex';
+            $('btn-faceid-admin').style.display = 'inline-flex';
+        }
         gerarNumeroOrcamento(); setarDataHoraAtual(); carregarFrasesSelect(); renderCategoriaSelects(); adicionarItem(); 
-        
-        if(!localStorage.getItem('crevo_prices')) { sincronizarDadosServidor(); }
+        if(!localStorage.getItem('crevo_prices')) sincronizarDadosServidor();
     });
 
+    // --- BIOMETRIA E LOGIN ---
     window.fazerLogin = function() {
-        const u = document.getElementById('login-user').value.trim(); const p = document.getElementById('login-pass').value.trim();
+        const u = $('login-user').value.trim(); const p = $('login-pass').value.trim();
         const valid = usuariosDB.find(x => x.user === u && x.pass === p);
         if (valid) {
             sessionStorage.setItem('crevo_logged_in', 'true');
-            document.getElementById('login-overlay').style.display = 'none';
+            $('login-overlay').style.display = 'none';
             if(window.PublicKeyCredential && !localStorage.getItem('crevo_biometria_id')) {
                 setTimeout(() => { if(confirm("Deseja habilitar o Face ID / Touch ID neste aparelho?")) registrarBiometria(); }, 1000);
             }
-        } else { document.getElementById('login-error').style.display = 'block'; }
+        } else { $('login-error').style.display = 'block'; }
     };
 
     window.registrarBiometria = async function() {
-        if (!window.PublicKeyCredential) return alert("Biometria não suportada neste aparelho.");
+        if (!window.PublicKeyCredential) return alert("Biometria não suportada neste navegador.");
         try {
-            const publicKeyCredentialCreationOptions = {
-                challenge: Uint8Array.from("crevo_challenge_auth", c => c.charCodeAt(0)),
-                rp: { name: "CREVO Studio" },
-                user: { id: Uint8Array.from("admin", c => c.charCodeAt(0)), name: "admin@crevo.co", displayName: "Admin CREVO" },
+            const challenge = new Uint8Array(32); window.crypto.getRandomValues(challenge);
+            const userId = new Uint8Array(16); window.crypto.getRandomValues(userId);
+            const options = {
+                challenge, rp: { name: "CREVO Studio" }, // Omitindo ID permite o Chrome/Safari deduzir o domínio atual
+                user: { id: userId, name: "admin@crevo.co", displayName: "Admin CREVO" },
                 pubKeyCredParams: [{alg: -7, type: "public-key"}, {alg: -257, type: "public-key"}],
-                authenticatorSelection: { userVerification: "preferred" },
-                timeout: 60000
+                authenticatorSelection: { userVerification: "preferred" }, timeout: 60000
             };
-            const credential = await navigator.credentials.create({ publicKey: publicKeyCredentialCreationOptions });
-            let credId = Array.from(new Uint8Array(credential.rawId)).map(b => b.toString(16).padStart(2, '0')).join('');
-            localStorage.setItem('crevo_biometria_id', credId);
+            const credential = await navigator.credentials.create({ publicKey: options });
+            localStorage.setItem('crevo_biometria_id', b64uEncode(credential.rawId));
+            $('btn-faceid-login').style.display = 'inline-flex';
+            $('btn-faceid-admin').style.display = 'inline-flex';
             alert("Biometria ativada com sucesso!");
-        } catch(e) { console.error(e); alert("Configuração cancelada ou falhou."); }
+        } catch(e) { 
+            console.error(e); 
+            alert("Configuração cancelada ou falhou. Verifique se está acessando o sistema por uma rede segura (HTTPS)."); 
+        }
     };
 
-    window.loginBiometria = async function() {
-        let savedIdHex = localStorage.getItem('crevo_biometria_id');
-        if(!savedIdHex) return alert("Biometria não configurada.");
+    window.loginBiometria = async function(isAdmin = false) {
+        let savedId = localStorage.getItem('crevo_biometria_id');
+        if(!savedId) return alert("Biometria não configurada.");
         try {
-            let savedId = new Uint8Array(savedIdHex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
-            const publicKeyCredentialRequestOptions = {
-                challenge: Uint8Array.from("crevo_challenge_auth_login", c => c.charCodeAt(0)),
-                allowCredentials: [{ id: savedId, type: 'public-key' }],
+            const challenge = new Uint8Array(32); window.crypto.getRandomValues(challenge);
+            const options = {
+                challenge, allowCredentials: [{ id: b64uDecode(savedId), type: 'public-key' }],
                 timeout: 60000, userVerification: "preferred"
             };
-            await navigator.credentials.get({ publicKey: publicKeyCredentialRequestOptions });
-            sessionStorage.setItem('crevo_logged_in', 'true');
-            document.getElementById('login-overlay').style.display = 'none';
-        } catch(e) { console.error(e); }
+            await navigator.credentials.get({ publicKey: options });
+            
+            if (isAdmin) {
+                fecharModalPwd(); abrirModalPrecos();
+            } else {
+                sessionStorage.setItem('crevo_logged_in', 'true');
+                $('login-overlay').style.display = 'none';
+            }
+        } catch(e) { console.error(e); alert("Autenticação falhou."); }
     };
 
     // --- SINCRONIZAÇÃO NUVEM ---
@@ -829,26 +907,20 @@
         } catch (err) { console.log("Rodando localmente."); }
     }
 
-    // --- CEP E UTILITARIOS ---
-    window.toggleFreteLinks = function(e, id) { e.preventDefault(); e.stopPropagation(); const drop = document.getElementById(id); const isOpen = drop.style.display === 'block'; document.querySelectorAll('.frete-dropdown').forEach(el => el.style.display = 'none'); if (!isOpen) drop.style.display = 'block'; };
+    // --- INTERFACE UTILS ---
+    window.toggleFreteLinks = function(e, id) { e.preventDefault(); e.stopPropagation(); const drop = $(id); const isOpen = drop.style.display === 'block'; document.querySelectorAll('.frete-dropdown').forEach(el => el.style.display = 'none'); if (!isOpen) drop.style.display = 'block'; };
     document.addEventListener('click', () => { document.querySelectorAll('.frete-dropdown').forEach(el => el.style.display = 'none'); });
 
-    async function buscarCEP(cep, prefix) {
-        let cleanCEP = cep.replace(/\D/g, '');
-        if(cleanCEP.length === 8) {
-            try {
-                let res = await fetch(`https://viacep.com.br/ws/${cleanCEP}/json/`); let data = await res.json();
-                if(!data.erro) {
-                    let endInput = document.getElementById(`${prefix}-endereco`); endInput.value = `${data.logradouro},  - ${data.bairro}`; document.getElementById(`${prefix}-cidade`).value = `${data.localidade} / ${data.uf}`;
-                    if(prefix === 'cliente') syncClientData();
-                    endInput.focus(); setTimeout(() => { endInput.setSelectionRange(data.logradouro.length + 2, data.logradouro.length + 2); }, 50);
-                }
-            } catch(e) { console.log(e); }
-        }
-    }
+    window.toggleCollapsible = function(id) {
+        const el = $(id); const icon = $('icon-' + id);
+        if(!el || !icon) return;
+        if(el.style.display === 'none') { el.style.display = 'block'; icon.setAttribute('name', 'chevron-up-outline'); } 
+        else { el.style.display = 'none'; icon.setAttribute('name', 'chevron-down-outline'); }
+    };
 
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { document.querySelectorAll('.modal-overlay').forEach(modal => { modal.style.display = 'none'; }); } });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') document.querySelectorAll('.modal-overlay').forEach(modal => { modal.style.display = 'none'; }); });
 
+    // --- FORMATADORES ---
     function formatDocDisplay(v) {
         if(!v) return '-'; let x = v.replace(/\D/g, '');
         if (x.length <= 11) { if(x.length === 11) { x = x.replace(/(\d{3})(\d)/, '$1.$2'); x = x.replace(/(\d{3})(\d)/, '$1.$2'); x = x.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); } } 
@@ -857,7 +929,7 @@
     }
     function formatDDIPhone(ddi, tel) {
         if (!tel) return '-'; let cleanDDI = ddi ? ddi.toString().replace('.0', '').trim() : '+55'; if (!cleanDDI.startsWith('+')) cleanDDI = '+' + cleanDDI.replace(/\D/g, '');
-        let rawTelStr = tel.toString().replace(/^55\.0\s*/, ''); let cleanTel = rawTelStr.replace(/[^\d\+]/g, ''); let ddiDigits = cleanDDI.replace('+', '');
+        let cleanTel = tel.toString().replace(/^55\.0\s*/, '').replace(/[^\d\+]/g, ''); let ddiDigits = cleanDDI.replace('+', '');
         if (cleanTel.startsWith('+'+ddiDigits)) cleanTel = cleanTel.substring(ddiDigits.length+1); else if (cleanTel.startsWith(ddiDigits) && cleanTel.length > 10) cleanTel = cleanTel.substring(ddiDigits.length);
         cleanTel = cleanTel.replace(/\D/g, ''); let maskedTel = cleanTel;
         if (cleanDDI === '+55') { let x = cleanTel.match(/(\d{0,2})(\d{0,5})(\d{0,4})/); if(x) maskedTel = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : ''); } 
@@ -866,19 +938,21 @@
         return `${cleanDDI} ${maskedTel}`;
     }
 
-    function gerarNumeroOrcamento() { document.getElementById('orcamento-num-input').value = `ORC-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`; }
-    function setarDataHoraAtual() { const now = new Date(); now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); document.getElementById('orcamento-data-input').value = now.toISOString().slice(0, 16); }
+    function gerarNumeroOrcamento() { $('orcamento-num-input').value = `ORC-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`; }
+    function setarDataHoraAtual() { const now = new Date(); now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); $('orcamento-data-input').value = now.toISOString().slice(0, 16); }
 
-    window.extrairInstagram = function(input) { let val = input.value.trim(); val = val.split('?')[0].replace(/\/$/, ""); if(val.includes('instagram.com/')) val = val.split('instagram.com/')[1]; input.value = val.replace(/^@/, '').replace(/\//g, ''); };
+    window.extrairInstagram = function(input) { let val = input.value.trim().split('?')[0].replace(/\/$/, ""); if(val.includes('instagram.com/')) val = val.split('instagram.com/')[1]; input.value = val.replace(/^@/, '').replace(/\//g, ''); };
+    
+    // --- MÁSCARAS ---
     window.handlePasteTelefone = function(e) {
-        e.preventDefault(); let paste = (e.clipboardData || window.clipboardData).getData('text'); let ddiId = e.target.id === 'cliente-tel' ? 'cliente-ddi' : 'modal-cliente-ddi'; let ddiEl = document.getElementById(ddiId); if(!ddiEl) return;
-        let ddi = ddiEl.value; let ddiNumeric = ddi.replace(/\D/g, ''); let clean = paste.replace(/\D/g, ''); 
+        e.preventDefault(); let paste = (e.clipboardData || window.clipboardData).getData('text'); let ddiEl = $(e.target.id === 'cliente-tel' ? 'cliente-ddi' : 'modal-cliente-ddi'); if(!ddiEl) return;
+        let ddi = ddiEl.value, ddiNumeric = ddi.replace(/\D/g, ''), clean = paste.replace(/\D/g, ''); 
         if (clean.startsWith(ddiNumeric)) { if (ddi === '+55' && clean.length >= 12) clean = clean.substring(2); else if (ddi === '+1' && clean.length >= 11) clean = clean.substring(1); else if (ddi !== '+55' && ddi !== '+1') clean = clean.substring(ddiNumeric.length); }
         e.target.value = clean; aplicarMascaraTelefone({target: e.target});
     };
     window.aplicarMascaraTelefone = function(e) {
-        let input = e.target; let ddiId = input.id === 'cliente-tel' ? 'cliente-ddi' : 'modal-cliente-ddi'; let ddiEl = document.getElementById(ddiId); if(!ddiEl) return;
-        let ddi = ddiEl.value; let v = (input.value || '').replace(/\D/g, '');
+        let input = e.target; let ddiEl = $(input.id === 'cliente-tel' ? 'cliente-ddi' : 'modal-cliente-ddi'); if(!ddiEl) return;
+        let ddi = ddiEl.value, v = (input.value || '').replace(/\D/g, '');
         if (ddi === '+55') { v = v.substring(0, 11); let x = v.match(/(\d{0,2})(\d{0,5})(\d{0,4})/); if(x) input.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : ''); } 
         else if (ddi === '+1') { v = v.substring(0, 10); let x = v.match(/(\d{0,3})(\d{0,3})(\d{0,4})/); if(x) input.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : ''); } 
         else if (ddi === '+351') { v = v.substring(0, 9); let x = v.match(/(\d{0,3})(\d{0,3})(\d{0,3})/); if(x) input.value = !x[2] ? x[1] : x[1] + (x[2] ? ' ' + x[2] : '') + (x[3] ? ' ' + x[3] : ''); } 
@@ -886,75 +960,93 @@
         if(input.id === 'cliente-tel') syncClientData();
     };
     window.aplicarMascaraDocumento = function(e) {
-        let val = e.target.value || ''; let x = val.replace(/\D/g, '');
+        let x = (e.target.value || '').replace(/\D/g, '');
         if (x.length <= 11) { let m = x.match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/); if(m) e.target.value = !m[2] ? m[1] : m[1] + '.' + m[2] + (m[3] ? '.' + m[3] : '') + (m[4] ? '-' + m[4] : ''); } 
         else { let m = x.match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/); if(m) e.target.value = !m[2] ? m[1] : m[1] + '.' + m[2] + (m[3] ? '.' + m[3] : '') + (m[4] ? '/' + m[4] : '') + (m[5] ? '-' + m[5] : ''); }
         if(e.target.id === 'cliente-doc') syncClientData();
     };
     window.aplicarMascaraCEP = function(e, prefix) {
-        let val = e.target.value || ''; let x = val.replace(/\D/g, '').match(/(\d{0,5})(\d{0,3})/); if(x) e.target.value = !x[2] ? x[1] : x[1] + '-' + x[2];
+        let x = (e.target.value || '').replace(/\D/g, '').match(/(\d{0,5})(\d{0,3})/); if(x) e.target.value = !x[2] ? x[1] : x[1] + '-' + x[2];
         if(prefix === 'cliente') syncClientData();
         if(e.type === 'input' && e.target.value && e.target.value.length === 9) buscarCEP(e.target.value, prefix);
     };
 
+    async function buscarCEP(cep, prefix) {
+        let cleanCEP = cep.replace(/\D/g, '');
+        if(cleanCEP.length === 8) {
+            try {
+                let res = await fetch(`https://viacep.com.br/ws/${cleanCEP}/json/`); let data = await res.json();
+                if(!data.erro) {
+                    let endInput = $(`${prefix}-endereco`); endInput.value = `${data.logradouro},  - ${data.bairro}`; $(`${prefix}-cidade`).value = `${data.localidade} / ${data.uf}`;
+                    if(prefix === 'cliente') syncClientData();
+                    endInput.focus(); setTimeout(() => endInput.setSelectionRange(data.logradouro.length + 2, data.logradouro.length + 2), 50);
+                }
+            } catch(e) { console.log(e); }
+        }
+    }
+
+    // --- ORÇAMENTO CLIENTE ---
     window.syncClientData = function() {
         try {
-            let nomeCli = document.getElementById('cliente-nome').value.trim(); let docCli = document.getElementById('cliente-doc').value.trim(); let endCli = document.getElementById('cliente-endereco').value.trim(); let cidCli = document.getElementById('cliente-cidade').value.trim(); let cepCli = document.getElementById('cliente-cep').value.trim();
-            document.getElementById('print-cliente-nome').innerText = nomeCli || 'Não informado'; document.getElementById('print-cliente-email').innerText = document.getElementById('cliente-email').value || '-';
-            let ddi = document.getElementById('cliente-ddi').value; let tel = document.getElementById('cliente-tel').value; document.getElementById('print-cliente-tel').innerText = tel ? `${ddi} ${tel}` : '-'; document.getElementById('print-cliente-doc').innerText = docCli || '-';
-            if(cepCli) { document.getElementById('p-print-cep').style.display = 'block'; document.getElementById('print-cliente-cep').innerText = cepCli; } else { document.getElementById('p-print-cep').style.display = 'none'; }
-            if(endCli) { document.getElementById('p-print-endereco').style.display = 'block'; document.getElementById('print-cliente-endereco').innerText = endCli; } else { document.getElementById('p-print-endereco').style.display = 'none'; }
-            if(cidCli) { document.getElementById('p-print-cidade').style.display = 'block'; document.getElementById('print-cliente-cidade').innerText = cidCli; } else { document.getElementById('p-print-cidade').style.display = 'none'; }
+            let nomeCli = $('cliente-nome').value.trim(), docCli = $('cliente-doc').value.trim(), endCli = $('cliente-endereco').value.trim(), cidCli = $('cliente-cidade').value.trim(), cepCli = $('cliente-cep').value.trim();
+            $('print-cliente-nome').innerText = nomeCli || 'Não informado'; $('print-cliente-email').innerText = $('cliente-email').value || '-';
+            let tel = $('cliente-tel').value; $('print-cliente-tel').innerText = tel ? `${$('cliente-ddi').value} ${tel}` : '-'; $('print-cliente-doc').innerText = docCli || '-';
+            
+            $('p-print-cep').style.display = cepCli ? 'block' : 'none'; if(cepCli) $('print-cliente-cep').innerText = cepCli;
+            $('p-print-endereco').style.display = endCli ? 'block' : 'none'; if(endCli) $('print-cliente-endereco').innerText = endCli;
+            $('p-print-cidade').style.display = cidCli ? 'block' : 'none'; if(cidCli) $('print-cliente-cidade').innerText = cidCli;
+            
             let sigTexto = nomeCli ? `De acordo (${nomeCli.toUpperCase()})` : 'De acordo (Cliente)';
-            if(docCli) { let cleanDoc = docCli.replace(/\D/g, ''); let docPrefix = cleanDoc.length > 11 ? 'CNPJ: ' : 'CPF: '; sigTexto += `<br>${docPrefix}${docCli}`; }
-            document.querySelectorAll('.sig-cliente-text').forEach(el => { el.innerHTML = sigTexto; });
+            if(docCli) sigTexto += `<br>${docCli.replace(/\D/g, '').length > 11 ? 'CNPJ: ' : 'CPF: '}${docCli}`;
+            document.querySelectorAll('.sig-cliente-text').forEach(el => el.innerHTML = sigTexto);
         } catch(err) {}
     };
 
     window.limparDadosCliente = function() {
-        document.getElementById('cliente-nome').value = ''; document.getElementById('cliente-email').value = ''; document.getElementById('cliente-tel').value = '';
-        document.getElementById('cliente-doc').value = ''; document.getElementById('cliente-cep').value = ''; document.getElementById('cliente-endereco').value = '';
-        document.getElementById('cliente-cidade').value = ''; document.getElementById('cliente-ddi').value = '+55'; syncClientData();
+        $('cliente-nome').value = ''; $('cliente-email').value = ''; $('cliente-tel').value = ''; $('cliente-doc').value = ''; 
+        $('cliente-cep').value = ''; $('cliente-endereco').value = ''; $('cliente-cidade').value = ''; $('cliente-ddi').value = '+55'; 
+        syncClientData();
     };
 
+    // --- CATEGORIAS ---
     function renderCategoriaSelects() {
-        const selModal = document.getElementById('modal-cliente-cat'); let currentValModal = selModal.value;
-        selModal.innerHTML = '<option value="">Sem categoria</option>'; categoriasDB.forEach(cat => { selModal.innerHTML += `<option value="${cat}">${cat}</option>`; }); selModal.value = currentValModal;
+        const selModal = $('modal-cliente-cat'); let currentValModal = selModal.value;
+        selModal.innerHTML = '<option value="">Sem categoria</option>'; categoriasDB.forEach(cat => selModal.innerHTML += `<option value="${cat}">${cat}</option>`); selModal.value = currentValModal;
     }
 
     let catEditOld = '';
-    window.abrirModalCategorias = function() { document.getElementById('categorias-modal').style.display = 'flex'; cancelarEdicaoCategoria(); renderCategoriasAdmin(); };
-    window.fecharModalCategorias = function() { document.getElementById('categorias-modal').style.display = 'none'; };
-    window.cancelarEdicaoCategoria = function() { document.getElementById('nova-categoria-nome').value = ''; document.getElementById('lbl-nova-cat').innerText = 'Nova categoria'; document.getElementById('btn-cancel-edit-cat').style.display = 'none'; catEditOld = ''; };
-    window.editarCategoriaAdmin = function(nome) { document.getElementById('nova-categoria-nome').value = nome; document.getElementById('lbl-nova-cat').innerText = 'Editar categoria'; document.getElementById('btn-cancel-edit-cat').style.display = 'inline-flex'; catEditOld = nome; };
+    window.abrirModalCategorias = function() { $('categorias-modal').style.display = 'flex'; cancelarEdicaoCategoria(); renderCategoriasAdmin(); };
+    window.fecharModalCategorias = function() { $('categorias-modal').style.display = 'none'; };
+    window.cancelarEdicaoCategoria = function() { $('nova-categoria-nome').value = ''; $('lbl-nova-cat').innerText = 'Nova categoria'; $('btn-cancel-edit-cat').style.display = 'none'; catEditOld = ''; };
+    window.editarCategoriaAdmin = function(nome) { $('nova-categoria-nome').value = nome; $('lbl-nova-cat').innerText = 'Editar categoria'; $('btn-cancel-edit-cat').style.display = 'inline-flex'; catEditOld = nome; };
 
     window.salvarCategoriaAdmin = function() {
-        let val = document.getElementById('nova-categoria-nome').value.trim(); if(!val) return;
+        let val = $('nova-categoria-nome').value.trim(); if(!val) return;
         if(catEditOld) { if(catEditOld !== val) { clientesDB.forEach(c => { if(c.categoria === catEditOld) c.categoria = val; }); localStorage.setItem('crevo_clientes', JSON.stringify(clientesDB)); let idx = categoriasDB.indexOf(catEditOld); if(idx > -1) categoriasDB[idx] = val; } } 
         else { if(!categoriasDB.includes(val)) categoriasDB.push(val); }
         categoriasDB.sort(); localStorage.setItem('crevo_categorias', JSON.stringify(categoriasDB));
-        cancelarEdicaoCategoria(); renderCategoriasAdmin(); renderCategoriaSelects(); renderCategoryFilters(); renderListClientes(document.getElementById('busca-cliente') ? document.getElementById('busca-cliente').value : '');
+        cancelarEdicaoCategoria(); renderCategoriasAdmin(); renderCategoriaSelects(); renderCategoryFilters(); renderListClientes($('busca-cliente') ? $('busca-cliente').value : '');
     };
-    window.salvarEUsarCategoriaAdmin = function() { let val = document.getElementById('nova-categoria-nome').value.trim(); if(!val) return; salvarCategoriaAdmin(); document.getElementById('modal-cliente-cat').value = val; fecharModalCategorias(); };
+    window.salvarEUsarCategoriaAdmin = function() { let val = $('nova-categoria-nome').value.trim(); if(!val) return; salvarCategoriaAdmin(); $('modal-cliente-cat').value = val; fecharModalCategorias(); };
     window.removerCategoriaAdmin = function(nome) {
         if(confirm(`Excluir a categoria "${nome}"? Clientes vinculados a ela ficarão sem categoria.`)) {
             categoriasDB = categoriasDB.filter(c => c !== nome); clientesDB.forEach(c => { if(c.categoria === nome) c.categoria = ''; });
             localStorage.setItem('crevo_categorias', JSON.stringify(categoriasDB)); localStorage.setItem('crevo_clientes', JSON.stringify(clientesDB));
-            renderCategoriasAdmin(); renderCategoriaSelects(); renderCategoryFilters(); renderListClientes(document.getElementById('busca-cliente') ? document.getElementById('busca-cliente').value : '');
+            renderCategoriasAdmin(); renderCategoriaSelects(); renderCategoryFilters(); renderListClientes($('busca-cliente') ? $('busca-cliente').value : '');
         }
     };
     function renderCategoriasAdmin() {
-        const tb = document.getElementById('lista-categorias-body'); tb.innerHTML = '';
-        categoriasDB.forEach(cat => { tb.innerHTML += `<tr><td><strong>${cat}</strong></td><td class="actions-cell"><div class="actions-cell-flex"><button class="btn btn-icon" onclick="editarCategoriaAdmin('${cat}')"><ion-icon name="pencil-outline"></ion-icon></button> <button class="btn btn-icon" style="color:var(--danger-color);" onclick="removerCategoriaAdmin('${cat}')"><ion-icon name="trash-outline"></ion-icon></button></div></td></tr>`; });
+        const tb = $('lista-categorias-body'); tb.innerHTML = '';
+        categoriasDB.forEach(cat => tb.innerHTML += `<tr><td><strong>${cat}</strong></td><td class="actions-cell"><div class="actions-cell-flex"><button class="btn btn-icon" onclick="editarCategoriaAdmin('${cat}')"><ion-icon name="pencil-outline"></ion-icon></button> <button class="btn btn-icon" style="color:var(--danger-color);" onclick="removerCategoriaAdmin('${cat}')"><ion-icon name="trash-outline"></ion-icon></button></div></td></tr>`);
     }
 
     window.renderCategoryFilters = function() {
-        const container = document.getElementById('category-filter-container'); if(!container) return;
+        const container = $('category-filter-container'); if(!container) return;
         const pastelColors = ['#E6F2FF', '#E6FFE6', '#FFFEE6', '#FFE6FE', '#FFEBE6', '#F2E6FF', '#F2FFE6', '#E6FFFF', '#FFE6E6', '#F0F8FF', '#F5F5DC', '#FFF0F5', '#F5FFFA', '#F0FFF0'];
         let html = `<button class="cat-tag" style="background: ${currentCategoryFilter === 'Todos' ? 'var(--accent-color)' : '#fff'}; color: ${currentCategoryFilter === 'Todos' ? '#fff' : 'var(--text-main)'}; border-color: ${currentCategoryFilter === 'Todos' ? 'var(--accent-color)' : 'var(--border-color)'};" onclick="setCategoryFilter('Todos')">Todos</button>`;
         categoriasDB.forEach((cat, index) => {
-            let isActive = currentCategoryFilter === cat; let bgColor = isActive ? 'var(--accent-color)' : pastelColors[index % pastelColors.length]; let color = isActive ? '#fff' : 'var(--text-main)'; let borderColor = isActive ? 'var(--accent-color)' : '#e4e4e4';
-            html += `<button class="cat-tag" style="background: ${bgColor}; color: ${color}; border-color: ${borderColor};" onclick="setCategoryFilter('${cat}')">${cat}</button>`;
+            let isActive = currentCategoryFilter === cat; let bgColor = isActive ? 'var(--accent-color)' : pastelColors[index % pastelColors.length]; let color = isActive ? '#fff' : 'var(--text-main)';
+            html += `<button class="cat-tag" style="background: ${bgColor}; color: ${color}; border-color: ${isActive ? 'var(--accent-color)' : '#e4e4e4'};" onclick="setCategoryFilter('${cat}')">${cat}</button>`;
         });
         if(clientesDB.some(c => !c.categoria || c.categoria.trim() === '')) {
             let isActive = currentCategoryFilter === 'Sem categoria'; let bgColor = isActive ? 'var(--accent-color)' : '#ffffff'; let color = isActive ? '#fff' : 'var(--text-main)';
@@ -962,46 +1054,47 @@
         }
         container.innerHTML = html;
     };
-    window.setCategoryFilter = function(cat) { currentCategoryFilter = cat; renderCategoryFilters(); renderListClientes(document.getElementById('busca-cliente') ? document.getElementById('busca-cliente').value : ''); };
+    window.setCategoryFilter = function(cat) { currentCategoryFilter = cat; renderCategoryFilters(); renderListClientes($('busca-cliente') ? $('busca-cliente').value : ''); };
 
-    // --- CRM ---
-    window.abrirModalClientes = function() { document.getElementById('client-modal').style.display = 'flex'; let searchInput = document.getElementById('busca-cliente'); if(searchInput) searchInput.value = ''; currentCategoryFilter = 'Todos'; renderCategoryFilters(); renderListClientes(); };
-    window.fecharModalClientes = function() { document.getElementById('client-modal').style.display = 'none'; };
+    // --- CRM DE CLIENTES ---
+    window.abrirModalClientes = function() { $('client-modal').style.display = 'flex'; fecharDetalhesCliente(); let searchInput = $('busca-cliente'); if(searchInput) searchInput.value = ''; currentCategoryFilter = 'Todos'; renderCategoryFilters(); renderListClientes(); };
+    window.fecharModalClientes = function() { $('client-modal').style.display = 'none'; };
     window.cancelarEdicaoClienteModal = function() {
-        document.getElementById('modal-cliente-id').value = ''; document.getElementById('modal-cliente-nome').value = ''; document.getElementById('modal-cliente-email').value = ''; document.getElementById('modal-cliente-ddi').value = '+55'; document.getElementById('modal-cliente-tel').value = ''; document.getElementById('modal-cliente-doc').value = ''; document.getElementById('modal-cliente-cep').value = ''; document.getElementById('modal-cliente-endereco').value = ''; document.getElementById('modal-cliente-cidade').value = ''; document.getElementById('modal-cliente-cat').value = ''; document.getElementById('modal-cliente-ig').value = ''; document.getElementById('modal-cliente-obs').value = ''; document.getElementById('modal-cliente-fixo').checked = false;
-        document.getElementById('modal-client-title').innerText = 'Adicionar novo cliente'; document.getElementById('btn-cancel-edit-client').style.display = 'none'; document.getElementById('btn-delete-edit-client').style.display = 'none';
+        ['modal-cliente-id','modal-cliente-nome','modal-cliente-email','modal-cliente-tel','modal-cliente-doc','modal-cliente-cep','modal-cliente-endereco','modal-cliente-cidade','modal-cliente-cat','modal-cliente-ig','modal-cliente-obs'].forEach(id => $(id).value = '');
+        $('modal-cliente-ddi').value = '+55'; $('modal-cliente-fixo').checked = false;
+        $('btn-cancel-edit-client').style.display = 'none'; $('form-add-cliente').style.display = 'none'; $('icon-form-add-cliente').setAttribute('name', 'chevron-down-outline');
     };
 
     window.editarClienteModal = function(id) {
         const c = clientesDB.find(x => x.id === id); if(!c) return;
-        document.getElementById('modal-cliente-id').value = c.id; document.getElementById('modal-cliente-nome').value = c.nome || ''; document.getElementById('modal-cliente-email').value = c.email || '';
-        let ddi = c.ddi || '+55'; document.getElementById('modal-cliente-ddi').value = ddi;
-        let telClean = (c.tel || '').toString().replace(/[^\d\+]/g, ''); let ddiNum = ddi.replace(/\D/g, ''); if(telClean.startsWith('+'+ddiNum)) telClean = telClean.substring(ddiNum.length+1); else if(telClean.startsWith(ddiNum) && telClean.length > 10) telClean = telClean.substring(ddiNum.length); telClean = telClean.replace(/\D/g, '');
-        let inputTel = document.getElementById('modal-cliente-tel'); inputTel.value = telClean; aplicarMascaraTelefone({target: inputTel});
-        let inputDoc = document.getElementById('modal-cliente-doc'); inputDoc.value = c.doc || ''; aplicarMascaraDocumento({target: inputDoc});
-        let inputCep = document.getElementById('modal-cliente-cep'); inputCep.value = c.cep || ''; aplicarMascaraCEP({target: inputCep, type: 'manual'}, 'modal-cliente');
-        document.getElementById('modal-cliente-endereco').value = c.endereco || ''; document.getElementById('modal-cliente-cidade').value = c.cidade || ''; document.getElementById('modal-cliente-cat').value = c.categoria || ''; document.getElementById('modal-cliente-ig').value = c.ig || ''; document.getElementById('modal-cliente-obs').value = c.observacao || ''; document.getElementById('modal-cliente-fixo').checked = c.fixo || false;
-        document.getElementById('modal-client-title').innerText = 'Editar cliente'; document.getElementById('btn-cancel-edit-client').style.display = 'inline-flex'; document.getElementById('btn-delete-edit-client').style.display = 'inline-flex'; document.querySelector('#client-modal .modal-content').scrollTop = 0;
-    };
-
-    window.apagarClienteSendoEditado = function() {
-        const id = document.getElementById('modal-cliente-id').value;
-        if(id && confirm("Deseja excluir permanentemente este cliente?")) { clientesDB = clientesDB.filter(x => x.id !== parseInt(id)); localStorage.setItem('crevo_clientes', JSON.stringify(clientesDB)); cancelarEdicaoClienteModal(); renderCategoryFilters(); renderListClientes(document.getElementById('busca-cliente') ? document.getElementById('busca-cliente').value : ''); }
+        fecharDetalhesCliente();
+        $('modal-cliente-id').value = c.id; $('modal-cliente-nome').value = c.nome || ''; $('modal-cliente-email').value = c.email || '';
+        let ddi = c.ddi || '+55'; $('modal-cliente-ddi').value = ddi;
+        let telClean = (c.tel || '').toString().replace(/[^\d\+]/g, ''), ddiNum = ddi.replace(/\D/g, ''); 
+        if(telClean.startsWith('+'+ddiNum)) telClean = telClean.substring(ddiNum.length+1); else if(telClean.startsWith(ddiNum) && telClean.length > 10) telClean = telClean.substring(ddiNum.length);
+        $('modal-cliente-tel').value = telClean.replace(/\D/g, ''); aplicarMascaraTelefone({target: $('modal-cliente-tel')});
+        $('modal-cliente-doc').value = c.doc || ''; aplicarMascaraDocumento({target: $('modal-cliente-doc')});
+        $('modal-cliente-cep').value = c.cep || ''; aplicarMascaraCEP({target: $('modal-cliente-cep'), type: 'manual'}, 'modal-cliente');
+        $('modal-cliente-endereco').value = c.endereco || ''; $('modal-cliente-cidade').value = c.cidade || ''; $('modal-cliente-cat').value = c.categoria || ''; $('modal-cliente-ig').value = c.ig || ''; $('modal-cliente-obs').value = c.observacao || ''; $('modal-cliente-fixo').checked = c.fixo || false;
+        $('btn-cancel-edit-client').style.display = 'inline-flex'; $('form-add-cliente').style.display = 'block'; $('icon-form-add-cliente').setAttribute('name', 'chevron-up-outline');
+        document.querySelector('#client-modal .modal-content').scrollTop = 0;
     };
 
     window.salvarClienteModal = function() {
-        const id_edit = document.getElementById('modal-cliente-id').value; const nome = document.getElementById('modal-cliente-nome').value.trim(); const email = document.getElementById('modal-cliente-email').value.trim(); const tel = document.getElementById('modal-cliente-tel').value.trim(); const doc = document.getElementById('modal-cliente-doc').value.trim(); const cep = document.getElementById('modal-cliente-cep').value.trim(); const endereco = document.getElementById('modal-cliente-endereco').value.trim(); const cidade = document.getElementById('modal-cliente-cidade').value.trim(); const ddi = document.getElementById('modal-cliente-ddi').value; const categoria = document.getElementById('modal-cliente-cat').value.trim(); const observacao = document.getElementById('modal-cliente-obs').value.trim(); const fixo = document.getElementById('modal-cliente-fixo').checked;
-        let ig = document.getElementById('modal-cliente-ig').value.trim(); if(ig.includes('instagram.com/')) ig = ig.split('instagram.com/')[1].split('/')[0].split('?')[0]; ig = ig.replace(/^@/, '');
-        if (!nome) { alert("O nome é obrigatório."); return; }
-        const nc = { id: id_edit ? parseInt(id_edit) : Date.now(), nome, email, tel, doc, cep, endereco, cidade, ddi, categoria, ig, observacao, fixo };
-        if (id_edit) { let idx = clientesDB.findIndex(c => c.id === parseInt(id_edit)); if(idx >= 0) clientesDB[idx] = nc; } else { clientesDB.push(nc); }
-        localStorage.setItem('crevo_clientes', JSON.stringify(clientesDB)); cancelarEdicaoClienteModal(); renderCategoryFilters(); renderListClientes(document.getElementById('busca-cliente') ? document.getElementById('busca-cliente').value : ''); alert("Cliente salvo localmente!");
+        const id_edit = $('modal-cliente-id').value, nome = $('modal-cliente-nome').value.trim();
+        if (!nome) return alert("O nome é obrigatório.");
+        let ig = $('modal-cliente-ig').value.trim(); if(ig.includes('instagram.com/')) ig = ig.split('instagram.com/')[1].split('/')[0].split('?')[0];
+        
+        const nc = { id: id_edit ? parseInt(id_edit) : Date.now(), nome, email: $('modal-cliente-email').value.trim(), tel: $('modal-cliente-tel').value.trim(), doc: $('modal-cliente-doc').value.trim(), cep: $('modal-cliente-cep').value.trim(), endereco: $('modal-cliente-endereco').value.trim(), cidade: $('modal-cliente-cidade').value.trim(), ddi: $('modal-cliente-ddi').value, categoria: $('modal-cliente-cat').value.trim(), ig: ig.replace(/^@/, ''), observacao: $('modal-cliente-obs').value.trim(), fixo: $('modal-cliente-fixo').checked };
+        
+        if (id_edit) { let idx = clientesDB.findIndex(c => c.id === parseInt(id_edit)); if(idx >= 0) clientesDB[idx] = nc; } else clientesDB.push(nc);
+        localStorage.setItem('crevo_clientes', JSON.stringify(clientesDB)); cancelarEdicaoClienteModal(); renderCategoryFilters(); renderListClientes($('busca-cliente') ? $('busca-cliente').value : ''); alert("Cliente salvo localmente!");
     };
 
     window.salvarClienteAtual = function() {
-        const nome = document.getElementById('cliente-nome').value.trim(); const email = document.getElementById('cliente-email').value.trim(); const tel = document.getElementById('cliente-tel').value.trim(); const doc = document.getElementById('cliente-doc').value.trim(); const cep = document.getElementById('cliente-cep').value.trim(); const endereco = document.getElementById('cliente-endereco').value.trim(); const cidade = document.getElementById('cliente-cidade').value.trim(); const ddi = document.getElementById('cliente-ddi').value;
-        if (!nome) { alert("O nome é obrigatório."); return; }
-        let nc = { id: Date.now(), nome, email, tel, doc, cep, endereco, cidade, ddi, categoria: '', ig: '', observacao: '', fixo: false };
+        const nome = $('cliente-nome').value.trim(), doc = $('cliente-doc').value.trim();
+        if (!nome) return alert("O nome é obrigatório.");
+        let nc = { id: Date.now(), nome, email: $('cliente-email').value.trim(), tel: $('cliente-tel').value.trim(), doc, cep: $('cliente-cep').value.trim(), endereco: $('cliente-endereco').value.trim(), cidade: $('cliente-cidade').value.trim(), ddi: $('cliente-ddi').value, categoria: '', ig: '', observacao: '', fixo: false };
         let idx = clientesDB.findIndex(c => (doc && c.doc===doc) || (!doc && c.nome.toLowerCase()===nome.toLowerCase()));
         if (idx >= 0) { let existing = clientesDB[idx]; nc.id = existing.id; nc.categoria = existing.categoria || ''; nc.ig = existing.ig || ''; nc.observacao = existing.observacao || ''; nc.fixo = existing.fixo || false; clientesDB[idx] = nc; alert("Cadastro atualizado localmente!"); } 
         else { clientesDB.push(nc); alert("Novo cliente salvo localmente!"); }
@@ -1015,8 +1108,9 @@
     };
 
     window.renderListClientes = function(busca = '') {
-        const container = document.getElementById('client-list-container'); container.innerHTML = '';
-        if(clientesDB.length === 0) { document.getElementById('total-clientes-footer').innerText = '0'; container.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 20px; color: var(--text-muted);">Nenhum cliente cadastrado.</td></tr>`; return; }
+        const container = $('client-list-container'); container.innerHTML = '';
+        if(clientesDB.length === 0) { $('total-clientes-footer').innerText = '0'; container.innerHTML = `<div style="text-align:center; padding: 20px; color: var(--text-muted);">Nenhum cliente cadastrado.</div>`; return; }
+        
         let term = busca.toLowerCase().trim();
         let filtered = clientesDB.filter(c => {
             let matchBusca = (c.nome && c.nome.toLowerCase().includes(term)) || (c.email && c.email.toLowerCase().includes(term)) || (c.doc && c.doc.toLowerCase().includes(term));
@@ -1024,51 +1118,73 @@
             if (currentCategoryFilter === 'Sem categoria') matchCat = !c.categoria || c.categoria.trim() === '';
             return matchBusca && matchCat;
         });
-        document.getElementById('total-clientes-footer').innerText = filtered.length;
-        if(filtered.length === 0) { container.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 20px; color: var(--text-muted);">Nenhum cliente encontrado para "${busca}".</td></tr>`; return; }
-        let sorted = [...filtered].sort((a,b) => a.nome.localeCompare(b.nome));
-        let html = ''; let globalCount = 1;
-        sorted.forEach(c => {
-            let igLink = c.ig ? `<br><a href="https://instagram.com/${c.ig}" target="_blank" style="color:#0078d4; text-decoration:none; font-size:0.85rem;">@${c.ig}</a>` : '';
-            let obsTag = c.observacao ? `<br><small style="color:var(--text-muted); font-style:italic;">"${c.observacao}"</small>` : '';
-            let fixoTag = c.fixo ? `<span title="Cliente Fixo" style="color: #FFB300; font-size: 1.1rem; margin-left:5px;">★</span>` : '';
-            let catTag = c.categoria ? `<br><span class="cat-badge">${c.categoria}</span>` : '';
-            let displayDoc = formatDocDisplay(c.doc); let displayPhone = formatDDIPhone(c.ddi, c.tel);
-            html += `<tr>
-                <td><strong style="font-size:1rem;">${globalCount++}. ${c.nome}</strong>${fixoTag}<br><small>${c.email}</small>${igLink}${catTag}${obsTag}</td>
-                <td>Doc: ${displayDoc}<br>Local: ${c.cidade||c.cep||'-'}</td>
-                <td style="font-weight:600;">${displayPhone}</td>
-                <td class="actions-cell">
-                    <div class="actions-cell-flex">
-                        <button class="btn btn-icon" style="color:var(--success-color);" onclick="usarCliente(${c.id})"><ion-icon name="checkmark-outline"></ion-icon></button> 
-                        <button class="btn btn-icon" onclick="editarClienteModal(${c.id})"><ion-icon name="pencil-outline"></ion-icon></button> 
-                        <button class="btn btn-icon" style="color:var(--danger-color);" onclick="excluirCliente(${c.id})"><ion-icon name="trash-outline"></ion-icon></button>
-                    </div>
-                </td>
-            </tr>`;
+        
+        $('total-clientes-footer').innerText = filtered.length;
+        if(filtered.length === 0) { container.innerHTML = `<div style="text-align:center; padding: 20px; color: var(--text-muted);">Nenhum cliente encontrado para "${busca}".</div>`; return; }
+        
+        let html = '';
+        [...filtered].sort((a,b) => a.nome.localeCompare(b.nome)).forEach(c => {
+            html += `
+            <div class="ios-list-item" onclick="abrirDetalhesCliente(${c.id})">
+                <div class="ios-list-title">${c.nome} ${c.fixo ? `<span title="Cliente Fixo" style="color: #FFB300; font-size: 1.1rem;">★</span>` : ''}</div>
+                <div class="ios-list-actions">
+                    <button class="btn-icon" style="color:var(--success-color); padding: 4px;" onclick="event.stopPropagation(); usarCliente(${c.id})"><ion-icon name="checkmark-circle-outline" style="font-size: 24px;"></ion-icon></button>
+                    <ion-icon name="chevron-forward-outline" style="color:var(--text-muted); font-size: 20px;"></ion-icon>
+                </div>
+            </div>`;
         });
         container.innerHTML = html;
-    }
+    };
+
+    window.abrirDetalhesCliente = function(id) {
+        const c = clientesDB.find(x => x.id === id); if(!c) return;
+        $('crm-list-view').style.display = 'none'; $('crm-detail-view').style.display = 'flex'; $('detail-client-name').innerText = c.nome;
+        $('crm-detail-content').innerHTML = `
+            <div style="background: var(--bg-color); padding: 20px; border-radius: 12px; margin-bottom: 24px; font-size: 0.95rem; line-height: 1.8;">
+                <p><strong style="color: var(--text-muted);">Email:</strong><br>${c.email || '-'}</p>
+                <p><strong style="color: var(--text-muted);">Telefone:</strong><br>${formatDDIPhone(c.ddi, c.tel)}</p>
+                <p><strong style="color: var(--text-muted);">Documento:</strong><br>${formatDocDisplay(c.doc)}</p>
+                <p><strong style="color: var(--text-muted);">CEP:</strong><br>${c.cep || '-'}</p>
+                <p><strong style="color: var(--text-muted);">Endereço:</strong><br>${c.endereco || '-'}</p>
+                <p><strong style="color: var(--text-muted);">Cidade / UF:</strong><br>${c.cidade || '-'}</p>
+                <p><strong style="color: var(--text-muted);">Categoria:</strong><br>${c.categoria || '-'}</p>
+                <p><strong style="color: var(--text-muted);">Instagram:</strong><br>${c.ig ? '@'+c.ig : '-'}</p>
+                <p><strong style="color: var(--text-muted);">Observação:</strong><br>${c.observacao || '-'}</p>
+                <p><strong style="color: var(--text-muted);">Fixo:</strong><br>${c.fixo ? 'Sim ★' : 'Não'}</p>
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <button class="btn" style="flex: 1; min-width: 100%;" onclick="usarCliente(${c.id})"><ion-icon name="checkmark-outline"></ion-icon> Usar no Orçamento</button>
+                <button class="btn btn-outline" style="flex: 1; min-width: 140px;" onclick="editarClienteModal(${c.id})"><ion-icon name="pencil-outline"></ion-icon> Editar Cliente</button>
+                <button class="btn btn-danger" style="flex: 1; min-width: 140px;" onclick="excluirCliente(${c.id});"><ion-icon name="trash-outline"></ion-icon> Apagar Cliente</button>
+            </div>
+        `;
+    };
+
+    window.fecharDetalhesCliente = function() { $('crm-detail-view').style.display = 'none'; $('crm-list-view').style.display = 'flex'; };
 
     window.usarCliente = function(id) {
         try {
             const c = clientesDB.find(x => x.id === id); if(!c) return;
-            document.getElementById('cliente-nome').value = c.nome || ''; document.getElementById('cliente-email').value = c.email || '';
-            let ddi = c.ddi || '+55'; document.getElementById('cliente-ddi').value = ddi;
-            let telClean = (c.tel || '').toString().replace(/[^\d\+]/g, ''); let ddiNum = ddi.replace(/\D/g, '');
+            $('cliente-nome').value = c.nome || ''; $('cliente-email').value = c.email || '';
+            let ddi = c.ddi || '+55'; $('cliente-ddi').value = ddi;
+            let telClean = (c.tel || '').toString().replace(/[^\d\+]/g, ''), ddiNum = ddi.replace(/\D/g, '');
             if(telClean.startsWith('+'+ddiNum)) telClean = telClean.substring(ddiNum.length+1); else if(telClean.startsWith(ddiNum) && telClean.length > 10) telClean = telClean.substring(ddiNum.length);
-            telClean = telClean.replace(/\D/g, ''); let inputTel = document.getElementById('cliente-tel'); inputTel.value = telClean; aplicarMascaraTelefone({target: inputTel});
-            let inputDoc = document.getElementById('cliente-doc'); inputDoc.value = c.doc || ''; aplicarMascaraDocumento({target: inputDoc});
-            let inputCep = document.getElementById('cliente-cep'); inputCep.value = c.cep || ''; aplicarMascaraCEP({target: inputCep, type: 'manual'}, 'cliente');
-            document.getElementById('cliente-endereco').value = c.endereco || ''; document.getElementById('cliente-cidade').value = c.cidade || '';
+            $('cliente-tel').value = telClean.replace(/\D/g, ''); aplicarMascaraTelefone({target: $('cliente-tel')});
+            $('cliente-doc').value = c.doc || ''; aplicarMascaraDocumento({target: $('cliente-doc')});
+            $('cliente-cep').value = c.cep || ''; aplicarMascaraCEP({target: $('cliente-cep'), type: 'manual'}, 'cliente');
+            $('cliente-endereco').value = c.endereco || ''; $('cliente-cidade').value = c.cidade || '';
             syncClientData(); fecharModalClientes();
         } catch(err) { console.error(err); fecharModalClientes(); }
     };
     
-    window.excluirCliente = function(id) { if(confirm("Deseja excluir permanentemente este cliente do banco de dados?")) { clientesDB = clientesDB.filter(x => x.id!==id); localStorage.setItem('crevo_clientes', JSON.stringify(clientesDB)); renderCategoryFilters(); renderListClientes(document.getElementById('busca-cliente') ? document.getElementById('busca-cliente').value : ''); } };
+    window.excluirCliente = function(id) { 
+        if(confirm("Deseja excluir permanentemente este cliente do banco de dados?")) { 
+            clientesDB = clientesDB.filter(x => x.id!==id); localStorage.setItem('crevo_clientes', JSON.stringify(clientesDB)); renderCategoryFilters(); renderListClientes($('busca-cliente') ? $('busca-cliente').value : ''); fecharDetalhesCliente();
+        } 
+    };
     
     window.exportarClientes = function(type) { 
-        if(type === 'json') { baixarArquivo(JSON.stringify(clientesDB), "crevo_clientes_backup.json", "text/json;charset=utf-8;"); } 
+        if(type === 'json') baixarArquivo(JSON.stringify(clientesDB), "crevo_clientes_backup.json", "text/json;charset=utf-8;");
         else if(type === 'csv') { let csv = "\uFEFFID,Nome,Email,Telefone,Documento,CEP,Endereco,Cidade,DDI,Categoria,Instagram,Observacao,ClienteFixo\n"; clientesDB.forEach(c => { let row = [ c.id, c.nome, c.email, c.tel, c.doc, c.cep, c.endereco, c.cidade, c.ddi, c.categoria, c.ig, c.observacao, c.fixo ? 'Sim' : 'Nao' ]; csv += row.map(v => `"${(v||'').toString().replace(/"/g, '""')}"`).join(',') + "\n"; }); baixarArquivo(csv, "crevo_clientes_backup.csv", "text/csv;charset=utf-8;"); }
     };
     window.importarClientes = function(e) { const file = e.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(evt) { const txt = evt.target.result; if(file.name.endsWith('.json')) { try { let d = JSON.parse(txt); if(Array.isArray(d)) mesclarClientes(d); } catch(err) { alert("Erro JSON."); } } else if (file.name.endsWith('.csv')) { alert("Importação de CSV apenas pelo JSON para manter consistência de tipos."); } }; reader.readAsText(file); e.target.value = ""; };
@@ -1077,26 +1193,26 @@
         let ids = novos.map(n => n.id); clientesDB = clientesDB.filter(c => !ids.includes(c.id)).concat(novos);
         let catToUpdate = false; novos.forEach(nc => { if(nc.categoria && !categoriasDB.includes(nc.categoria)) { categoriasDB.push(nc.categoria); catToUpdate = true; } });
         if(catToUpdate) { categoriasDB.sort(); localStorage.setItem('crevo_categorias', JSON.stringify(categoriasDB)); renderCategoriaSelects(); }
-        localStorage.setItem('crevo_clientes', JSON.stringify(clientesDB)); renderCategoryFilters(); renderListClientes(document.getElementById('busca-cliente') ? document.getElementById('busca-cliente').value : ''); alert("Backup importado com sucesso!");
+        localStorage.setItem('crevo_clientes', JSON.stringify(clientesDB)); renderCategoryFilters(); renderListClientes($('busca-cliente') ? $('busca-cliente').value : ''); alert("Backup importado com sucesso!");
     }
 
     // --- ADMIN E PRECIFICAÇÃO ---
-    window.abrirModalPwd = function() { document.getElementById('pwd-modal').style.display = 'flex'; document.getElementById('admin-pwd').value = ''; document.getElementById('admin-pwd').focus(); };
-    window.fecharModalPwd = function() { document.getElementById('pwd-modal').style.display = 'none'; };
-    window.checkPwd = function() { if(document.getElementById('admin-pwd').value === '101214@Crevo') { fecharModalPwd(); abrirModalPrecos(); } else { alert("Senha incorreta."); } };
+    window.abrirModalPwd = function() { $('pwd-modal').style.display = 'flex'; $('admin-pwd').value = ''; };
+    window.fecharModalPwd = function() { $('pwd-modal').style.display = 'none'; };
+    window.checkPwd = function() { if($('admin-pwd').value === '101214@Crevo') { fecharModalPwd(); abrirModalPrecos(); } else alert("Senha incorreta."); };
 
     function abrirModalPrecos() {
-        document.getElementById('prices-modal').style.display = 'flex';
-        document.getElementById('base-custo-moldura').value = precosDB.moldura; document.getElementById('base-markup-moldura').value = precosDB.markup;
-        const cont = document.getElementById('config-materiais-lista'); cont.innerHTML = '';
-        ['papel', 'canvas'].forEach(tipo => { precosDB.materiais[tipo].forEach(mat => { cont.innerHTML += `<div><label>${mat.nome}</label><input type="number" step="0.000001" id="mat-${mat.id}" value="${mat.val}"></div>`; }); });
+        $('prices-modal').style.display = 'flex';
+        $('base-custo-moldura').value = precosDB.moldura; $('base-markup-moldura').value = precosDB.markup;
+        const cont = $('config-materiais-lista'); cont.innerHTML = '';
+        ['papel', 'canvas'].forEach(tipo => precosDB.materiais[tipo].forEach(mat => cont.innerHTML += `<div><label>${mat.nome}</label><input type="number" step="0.000001" id="mat-${mat.id}" value="${mat.val}"></div>`));
         renderCuponsAdmin(); renderUsuariosAdmin();
     }
-    window.fecharModalPrecos = function() { document.getElementById('prices-modal').style.display = 'none'; };
+    window.fecharModalPrecos = function() { $('prices-modal').style.display = 'none'; };
 
     window.salvarPrecos = function() {
-        precosDB.moldura = parseFloat(document.getElementById('base-custo-moldura').value) || 0; precosDB.markup = parseFloat(document.getElementById('base-markup-moldura').value) || 0;
-        ['papel', 'canvas'].forEach(tipo => { precosDB.materiais[tipo].forEach(mat => { mat.val = parseFloat(document.getElementById(`mat-${mat.id}`).value) || 0; }); });
+        precosDB.moldura = parseFloat($('base-custo-moldura').value) || 0; precosDB.markup = parseFloat($('base-markup-moldura').value) || 0;
+        ['papel', 'canvas'].forEach(tipo => precosDB.materiais[tipo].forEach(mat => mat.val = parseFloat($(`mat-${mat.id}`).value) || 0));
         localStorage.setItem('crevo_prices', JSON.stringify(precosDB)); updateAll(); alert("Salvo localmente! Lembre-se de baixar o Backup JSON e subir no GitHub.");
     };
 
@@ -1106,68 +1222,112 @@
         reader.onload = function(evt) { 
             try { 
                 let data = JSON.parse(evt.target.result); 
-                if(data && (data.precos || data.materiais)) { precosDB = data.precos || data; localStorage.setItem('crevo_prices', JSON.stringify(precosDB)); if(data.cupons) { cuponsDB = data.cupons; localStorage.setItem('crevo_cupons', JSON.stringify(cuponsDB)); } if(data.usuarios) { usuariosDB = data.usuarios; localStorage.setItem('crevo_usuarios', JSON.stringify(usuariosDB)); } fecharModalPrecos(); updateAll(); alert("Sistema importado!"); } else { alert("Arquivo inválido."); }
+                if(data && (data.precos || data.materiais)) { precosDB = data.precos || data; localStorage.setItem('crevo_prices', JSON.stringify(precosDB)); if(data.cupons) { cuponsDB = data.cupons; localStorage.setItem('crevo_cupons', JSON.stringify(cuponsDB)); } if(data.usuarios) { usuariosDB = data.usuarios; localStorage.setItem('crevo_usuarios', JSON.stringify(usuariosDB)); } fecharModalPrecos(); updateAll(); alert("Sistema importado!"); } else alert("Arquivo inválido.");
             } catch(err) { alert("Erro de leitura."); } 
         }; reader.readAsText(file); e.target.value = "";
     };
 
     function renderCuponsAdmin() {
-        const tb = document.getElementById('lista-cupons-body'); tb.innerHTML = '';
+        const tb = $('lista-cupons-body'); tb.innerHTML = '';
         for (let cod in cuponsDB) {
-            let c = cuponsDB[cod]; let display = c.tipo === 'percentual' ? `${c.val}%` : `R$ ${c.val}`;
+            let c = cuponsDB[cod], display = c.tipo === 'percentual' ? `${c.val}%` : `R$ ${c.val}`;
             tb.innerHTML += `<tr><td><strong>${cod}</strong></td><td>${c.tipo === 'percentual' ? 'Percentual' : 'Fixo'}</td><td style="font-weight:600;">${display}</td><td class="actions-cell"><div class="actions-cell-flex"><button class="btn btn-icon" onclick="editarCupomAdmin('${cod}')"><ion-icon name="pencil-outline"></ion-icon></button> <button class="btn btn-icon" style="color:var(--danger-color);" onclick="removerCupomAdmin('${cod}')"><ion-icon name="trash-outline"></ion-icon></button></div></td></tr>`;
         }
     }
-    window.editarCupomAdmin = function(cod) { const c = cuponsDB[cod]; if(!c) return; document.getElementById('novo-cupom-cod').value = cod; document.getElementById('novo-cupom-tipo').value = c.tipo; document.getElementById('novo-cupom-val').value = c.val; document.getElementById('modal-cupom-old-cod').value = cod; document.getElementById('btn-cancel-edit-cupom').style.display = 'inline-flex'; };
-    window.cancelarEdicaoCupom = function() { document.getElementById('novo-cupom-cod').value = ''; document.getElementById('novo-cupom-tipo').value = 'percentual'; document.getElementById('novo-cupom-val').value = ''; document.getElementById('modal-cupom-old-cod').value = ''; document.getElementById('btn-cancel-edit-cupom').style.display = 'none'; };
+    window.editarCupomAdmin = function(cod) { const c = cuponsDB[cod]; if(!c) return; $('novo-cupom-cod').value = cod; $('novo-cupom-tipo').value = c.tipo; $('novo-cupom-val').value = c.val; $('modal-cupom-old-cod').value = cod; $('btn-cancel-edit-cupom').style.display = 'inline-flex'; };
+    window.cancelarEdicaoCupom = function() { $('novo-cupom-cod').value = ''; $('novo-cupom-tipo').value = 'percentual'; $('novo-cupom-val').value = ''; $('modal-cupom-old-cod').value = ''; $('btn-cancel-edit-cupom').style.display = 'none'; };
     window.adicionarCupomAdmin = function() {
-        const cod = document.getElementById('novo-cupom-cod').value.trim().toUpperCase(); const tipo = document.getElementById('novo-cupom-tipo').value; const val = parseFloat(document.getElementById('novo-cupom-val').value); const oldCod = document.getElementById('modal-cupom-old-cod') ? document.getElementById('modal-cupom-old-cod').value : '';
-        if(!cod || isNaN(val)) { alert("Preencha código e valor."); return; }
-        if(oldCod && oldCod !== cod) { delete cuponsDB[oldCod]; }
+        const cod = $('novo-cupom-cod').value.trim().toUpperCase(), tipo = $('novo-cupom-tipo').value, val = parseFloat($('novo-cupom-val').value), oldCod = $('modal-cupom-old-cod') ? $('modal-cupom-old-cod').value : '';
+        if(!cod || isNaN(val)) return alert("Preencha código e valor.");
+        if(oldCod && oldCod !== cod) delete cuponsDB[oldCod];
         cuponsDB[cod] = { tipo: tipo, val: val }; localStorage.setItem('crevo_cupons', JSON.stringify(cuponsDB)); cancelarEdicaoCupom(); renderCuponsAdmin(); updateAll();
     };
     window.removerCupomAdmin = function(cod) { if(confirm("Excluir este cupom?")) { delete cuponsDB[cod]; localStorage.setItem('crevo_cupons', JSON.stringify(cuponsDB)); renderCuponsAdmin(); updateAll(); } };
 
     function renderUsuariosAdmin() {
-        const tb = document.getElementById('lista-usuarios-body'); tb.innerHTML = '';
-        usuariosDB.forEach(u => { tb.innerHTML += `<tr><td><strong>${u.user}</strong></td><td>••••••••</td><td class="actions-cell"><div class="actions-cell-flex"><button class="btn btn-icon" onclick="editarUsuarioAdmin('${u.user}')"><ion-icon name="pencil-outline"></ion-icon></button> <button class="btn btn-icon" style="color:var(--danger-color);" onclick="removerUsuarioAdmin('${u.user}')"><ion-icon name="trash-outline"></ion-icon></button></div></td></tr>`; });
+        const tb = $('lista-usuarios-body'); tb.innerHTML = '';
+        usuariosDB.forEach(u => tb.innerHTML += `<tr><td><strong>${u.user}</strong></td><td>••••••••</td><td class="actions-cell"><div class="actions-cell-flex"><button class="btn btn-icon" onclick="editarUsuarioAdmin('${u.user}')"><ion-icon name="pencil-outline"></ion-icon></button> <button class="btn btn-icon" style="color:var(--danger-color);" onclick="removerUsuarioAdmin('${u.user}')"><ion-icon name="trash-outline"></ion-icon></button></div></td></tr>`);
     }
-    window.editarUsuarioAdmin = function(username) { const u = usuariosDB.find(x => x.user === username); if(!u) return; document.getElementById('novo-usuario-user').value = u.user; document.getElementById('novo-usuario-pass').value = u.pass; document.getElementById('modal-usuario-old-user').value = u.user; document.getElementById('btn-cancel-edit-usuario').style.display = 'inline-flex'; };
-    window.cancelarEdicaoUsuario = function() { document.getElementById('novo-usuario-user').value = ''; document.getElementById('novo-usuario-pass').value = ''; document.getElementById('modal-usuario-old-user').value = ''; document.getElementById('btn-cancel-edit-usuario').style.display = 'none'; };
+    window.editarUsuarioAdmin = function(username) { const u = usuariosDB.find(x => x.user === username); if(!u) return; $('novo-usuario-user').value = u.user; $('novo-usuario-pass').value = u.pass; $('modal-usuario-old-user').value = u.user; $('btn-cancel-edit-usuario').style.display = 'inline-flex'; };
+    window.cancelarEdicaoUsuario = function() { $('novo-usuario-user').value = ''; $('novo-usuario-pass').value = ''; $('modal-usuario-old-user').value = ''; $('btn-cancel-edit-usuario').style.display = 'none'; };
     window.salvarUsuarioAdmin = function() {
-        const user = document.getElementById('novo-usuario-user').value.trim(); const pass = document.getElementById('novo-usuario-pass').value.trim(); const oldUser = document.getElementById('modal-usuario-old-user').value;
-        if(!user || !pass) { alert("Preencha usuário e senha."); return; }
-        if(oldUser && oldUser !== user) { usuariosDB = usuariosDB.filter(x => x.user !== oldUser); }
-        const existingIdx = usuariosDB.findIndex(x => x.user === user); if(existingIdx >= 0) { usuariosDB[existingIdx].pass = pass; } else { usuariosDB.push({ user, pass }); }
+        const user = $('novo-usuario-user').value.trim(), pass = $('novo-usuario-pass').value.trim(), oldUser = $('modal-usuario-old-user').value;
+        if(!user || !pass) return alert("Preencha usuário e senha.");
+        if(oldUser && oldUser !== user) usuariosDB = usuariosDB.filter(x => x.user !== oldUser);
+        const existingIdx = usuariosDB.findIndex(x => x.user === user); if(existingIdx >= 0) usuariosDB[existingIdx].pass = pass; else usuariosDB.push({ user, pass });
         localStorage.setItem('crevo_usuarios', JSON.stringify(usuariosDB)); cancelarEdicaoUsuario(); renderUsuariosAdmin();
     };
-    window.removerUsuarioAdmin = function(username) { if(usuariosDB.length <= 1) { alert("Não é possível excluir o último usuário."); return; } if(confirm(`Excluir o acesso de "${username}"?`)) { usuariosDB = usuariosDB.filter(x => x.user !== username); localStorage.setItem('crevo_usuarios', JSON.stringify(usuariosDB)); renderUsuariosAdmin(); } };
+    window.removerUsuarioAdmin = function(username) { if(usuariosDB.length <= 1) return alert("Não é possível excluir o último usuário."); if(confirm(`Excluir o acesso de "${username}"?`)) { usuariosDB = usuariosDB.filter(x => x.user !== username); localStorage.setItem('crevo_usuarios', JSON.stringify(usuariosDB)); renderUsuariosAdmin(); } };
 
-    // --- FRASES ---
+    // --- FRASES DE RODAPÉ (DRILL-DOWN IOS) ---
     function formatarFrase(f) { return `“${f.text}” — ${f.author}`; }
-    function carregarFrasesSelect() { const select = document.getElementById('frase-selecionada'); select.innerHTML = ''; frasesDB.forEach(f => select.innerHTML += `<option value="${f.id}">${formatarFrase(f)}</option>`); if(frasesDB.length > 0) select.value = frasesDB[Math.floor(Math.random() * frasesDB.length)].id; }
+    function carregarFrasesSelect() { const select = $('frase-selecionada'); select.innerHTML = ''; frasesDB.forEach(f => select.innerHTML += `<option value="${f.id}">${formatarFrase(f)}</option>`); if(frasesDB.length > 0) select.value = frasesDB[Math.floor(Math.random() * frasesDB.length)].id; }
 
-    window.abrirModalFrases = function() { document.getElementById('quotes-modal').style.display = 'flex'; cancelarEdicaoFrase(); renderizarFrases(); };
-    window.fecharModalFrases = function() { document.getElementById('quotes-modal').style.display = 'none'; carregarFrasesSelect(); };
-    window.cancelarEdicaoFrase = function() { document.getElementById('modal-frase-id').value = ''; document.getElementById('nova-frase-texto').value = ''; document.getElementById('nova-frase-autor').value = ''; document.getElementById('btn-cancel-edit-frase').style.display = 'none'; };
-    window.editarFrase = function(id) { const fr = frasesDB.find(f => f.id === id); if(!fr) return; document.getElementById('modal-frase-id').value = fr.id; document.getElementById('nova-frase-texto').value = fr.text; document.getElementById('nova-frase-autor').value = fr.author; document.getElementById('btn-cancel-edit-frase').style.display = 'inline-flex'; };
+    window.abrirModalFrases = function() { $('quotes-modal').style.display = 'flex'; fecharDetalhesFrase(); cancelarEdicaoFrase(); renderizarFrases(); };
+    window.fecharModalFrases = function() { $('quotes-modal').style.display = 'none'; carregarFrasesSelect(); };
+    
+    window.cancelarEdicaoFrase = function() { 
+        $('modal-frase-id').value = ''; $('nova-frase-texto').value = ''; $('nova-frase-autor').value = ''; 
+        $('btn-cancel-edit-frase').style.display = 'none'; $('form-add-frase').style.display = 'none'; $('icon-form-add-frase').setAttribute('name', 'chevron-down-outline'); 
+    };
+    
+    window.editarFrase = function(id) { 
+        const fr = frasesDB.find(f => f.id === id); if(!fr) return; 
+        fecharDetalhesFrase();
+        $('modal-frase-id').value = fr.id; $('nova-frase-texto').value = fr.text; $('nova-frase-autor').value = fr.author; 
+        $('btn-cancel-edit-frase').style.display = 'inline-flex'; $('form-add-frase').style.display = 'block'; $('icon-form-add-frase').setAttribute('name', 'chevron-up-outline'); 
+    };
 
     window.salvarFraseModal = function() {
-        const id_edit = document.getElementById('modal-frase-id').value; const txt = document.getElementById('nova-frase-texto').value.trim(); const aut = document.getElementById('nova-frase-autor').value.trim();
-        if(!txt || !aut) { alert("Preencha frase e autor."); return; }
+        const id_edit = $('modal-frase-id').value, txt = $('nova-frase-texto').value.trim(), aut = $('nova-frase-autor').value.trim();
+        if(!txt || !aut) return alert("Preencha frase e autor.");
         const nf = { id: id_edit ? parseInt(id_edit) : Date.now(), text: txt.replace(/["“”]/g, ''), author: aut };
-        if (id_edit) { let idx = frasesDB.findIndex(f => f.id === parseInt(id_edit)); if(idx >= 0) frasesDB[idx] = nf; } else { frasesDB.push(nf); }
+        if (id_edit) { let idx = frasesDB.findIndex(f => f.id === parseInt(id_edit)); if(idx >= 0) frasesDB[idx] = nf; } else frasesDB.push(nf);
         localStorage.setItem('crevo_quotes', JSON.stringify(frasesDB)); cancelarEdicaoFrase(); renderizarFrases(); carregarFrasesSelect();
-    }
+    };
 
-    function renderizarFrases() {
-        const tbody = document.getElementById('quotes-list-body'); tbody.innerHTML = '';
-        frasesDB.forEach(f => { tbody.innerHTML += `<tr><td style="font-style:italic; white-space: normal; word-wrap: break-word; line-height: 1.5;">${formatarFrase(f)}</td><td class="actions-cell"><div class="actions-cell-flex"><button class="btn btn-icon" onclick="editarFrase(${f.id})"><ion-icon name="pencil-outline"></ion-icon></button> <button class="btn btn-icon" style="color:var(--danger-color);" onclick="excluirFrase(${f.id})"><ion-icon name="trash-outline"></ion-icon></button></div></td></tr>`; });
-    }
+    window.renderizarFrases = function() {
+        const container = $('quotes-list-container'); container.innerHTML = '';
+        if(frasesDB.length === 0) { container.innerHTML = `<div style="text-align:center; padding: 20px; color: var(--text-muted);">Nenhuma frase cadastrada.</div>`; return; }
+        
+        let html = '';
+        frasesDB.forEach(f => {
+            html += `
+            <div class="ios-list-item" onclick="abrirDetalhesFrase(${f.id})">
+                <div class="ios-list-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%; display: block; font-style: italic; font-weight: normal;">“${f.text}”</div>
+                <div class="ios-list-actions">
+                    <ion-icon name="chevron-forward-outline" style="color:var(--text-muted); font-size: 20px;"></ion-icon>
+                </div>
+            </div>`;
+        });
+        container.innerHTML = html;
+    };
 
-    window.excluirFrase = function(id) { frasesDB = frasesDB.filter(f => f.id !== id); localStorage.setItem('crevo_quotes', JSON.stringify(frasesDB)); renderizarFrases(); };
+    window.abrirDetalhesFrase = function(id) {
+        const f = frasesDB.find(x => x.id === id); if(!f) return;
+        $('frases-list-view').style.display = 'none'; $('frases-detail-view').style.display = 'flex'; $('detail-frase-title').innerText = "Detalhes da Frase";
+        $('frases-detail-content').innerHTML = `
+            <div style="background: var(--bg-color); padding: 20px; border-radius: 12px; margin-bottom: 24px; font-size: 1.05rem; line-height: 1.6; font-style: italic;">
+                “${f.text}”<br><br>
+                <strong style="color: var(--text-main); font-style: normal;">— ${f.author}</strong>
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <button class="btn btn-outline" style="flex: 1; min-width: 140px;" onclick="editarFrase(${f.id})"><ion-icon name="pencil-outline"></ion-icon> Editar Frase</button>
+                <button class="btn btn-danger" style="flex: 1; min-width: 140px;" onclick="excluirFrase(${f.id})"><ion-icon name="trash-outline"></ion-icon> Apagar Frase</button>
+            </div>
+        `;
+    };
+
+    window.fecharDetalhesFrase = function() { $('frases-detail-view').style.display = 'none'; $('frases-list-view').style.display = 'flex'; };
+
+    window.excluirFrase = function(id) { 
+        if(confirm("Deseja apagar esta frase?")) {
+            frasesDB = frasesDB.filter(f => f.id !== id); localStorage.setItem('crevo_quotes', JSON.stringify(frasesDB)); renderizarFrases(); fecharDetalhesFrase();
+        } 
+    };
+
     window.exportarFrases = function() { baixarArquivo(JSON.stringify(frasesDB), "crevo_frases_backup.json", "text/json;charset=utf-8;"); };
-    window.importarFrases = function(e) { const file = e.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(evt) { try { let data = JSON.parse(evt.target.result); if(Array.isArray(data)) { frasesDB = data; localStorage.setItem('crevo_quotes', JSON.stringify(frasesDB)); renderizarFrases(); alert("Frases importadas!"); } else { alert("Arquivo inválido."); } } catch(err) { alert("Erro de leitura."); } }; reader.readAsText(file); e.target.value = ""; };
+    window.importarFrases = function(e) { const file = e.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(evt) { try { let data = JSON.parse(evt.target.result); if(Array.isArray(data)) { frasesDB = data; localStorage.setItem('crevo_quotes', JSON.stringify(frasesDB)); renderizarFrases(); alert("Frases importadas!"); } else alert("Arquivo inválido."); } catch(err) { alert("Erro de leitura."); } }; reader.readAsText(file); e.target.value = ""; };
 
     function baixarArquivo(content, filename, type) { const blob = new Blob([content], { type: type }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = filename; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url); }
 
@@ -1175,10 +1335,10 @@
     window.adicionarItem = function() { itemIdCounter++; itemsState.push({ id: itemIdCounter, tipo: 'canvas', materialId: 'policanvas', tamanhoSelect: '', w: '', h: '', comMoldura: false, tipoMoldura: 'Somente chassis', qtd: 1 }); renderItems(); updateAll(); };
     window.removerItem = function(id) { itemsState = itemsState.filter(i => i.id !== id); renderItems(); updateAll(); };
     window.duplicarItem = function(id) { const ori = itemsState.find(i => i.id === id); if(ori) { itemIdCounter++; itemsState.push({...ori, id: itemIdCounter}); renderItems(); updateAll(); } };
-    window.limparTudo = function() { if(confirm("Limpar todo o orçamento?")) { itemsState = []; limparDadosCliente(); gerarNumeroOrcamento(); setarDataHoraAtual(); document.getElementById('input-desconto').value=''; document.getElementById('msg-cupom').innerText=''; document.getElementById('valor-acrescimo').value='0'; document.getElementById('valor-frete').value='0'; adicionarItem(); carregarFrasesSelect(); } };
+    window.limparTudo = function() { if(confirm("Limpar todo o orçamento?")) { itemsState = []; limparDadosCliente(); gerarNumeroOrcamento(); setarDataHoraAtual(); $('input-desconto').value=''; $('msg-cupom').innerText=''; $('valor-acrescimo').value='0'; $('valor-frete').value='0'; adicionarItem(); carregarFrasesSelect(); } };
 
     function renderItems() {
-        const cont = document.getElementById('items-container'); cont.innerHTML = '';
+        const cont = $('items-container'); cont.innerHTML = '';
         itemsState.forEach((item, index) => {
             let matOptions = precosDB.materiais[item.tipo].map(m => `<option value="${m.id}" ${item.materialId===m.id?'selected':''}>${m.nome}</option>`).join('');
             let sizeOptions = `<option value="" disabled ${item.tamanhoSelect===''?'selected':''}>Selecione...</option><option value="personalizado" ${item.tamanhoSelect==='personalizado'?'selected':''}>Personalizado</option>`;
@@ -1221,7 +1381,7 @@
 
     // --- CALCULADORA E CUPOM ---
     window.updateAll = function() {
-        let tImp = 0, tMol = 0; const tb = document.getElementById('resume-body'); tb.innerHTML = '';
+        let tImp = 0, tMol = 0; const tb = $('resume-body'); tb.innerHTML = '';
         itemsState.forEach((i, idx) => {
             let area = 0, pUnitImp = 0, pUnitMol = 0; const mat = precosDB.materiais[i.tipo].find(m => m.id===i.materialId);
             if(i.w !== '' && i.h !== '') { area = i.w * i.h; pUnitImp = area * (mat?mat.val:0); if(i.comMoldura) pUnitMol = (area * precosDB.moldura) * precosDB.markup; }
@@ -1231,7 +1391,7 @@
         });
         if(itemsState.length===0) tb.innerHTML = `<tr><td colspan="5" style="text-align:center;">Nenhum item</td></tr>`;
 
-        let inputDesc = document.getElementById('input-desconto').value.trim().toUpperCase(); let des = 0; let msgCupom = document.getElementById('msg-cupom'); msgCupom.innerText = '';
+        let inputDesc = $('input-desconto').value.trim().toUpperCase(), des = 0, msgCupom = $('msg-cupom'); msgCupom.innerText = '';
         if(inputDesc !== '') {
             if(cuponsDB[inputDesc]) {
                 let c = cuponsDB[inputDesc]; if(c.tipo === 'percentual') { des = (tImp + tMol) * (c.val / 100); msgCupom.innerText = `✅ Cupom aplicado: ${c.val}% OFF`; } else { des = c.val; msgCupom.innerText = `✅ Cupom aplicado: R$ ${fBRL(c.val).replace('R$','').trim()} OFF`; }
@@ -1239,20 +1399,30 @@
             } else { msgCupom.innerText = '❌ Cupom inválido.'; msgCupom.style.color = 'var(--danger-color)'; des = 0; }
         }
 
-        const acr = parseFloat(document.getElementById('valor-acrescimo').value)||0; const fre = parseFloat(document.getElementById('valor-frete').value)||0; const ger = (tImp + tMol + acr + fre) - des;
-        ['tot-impressao','print-tot-impressao'].forEach(id=>document.getElementById(id).innerText=fBRL(tImp)); ['tot-moldura','print-tot-moldura'].forEach(id=>document.getElementById(id).innerText=fBRL(tMol)); ['tot-geral','print-tot-geral'].forEach(id=>document.getElementById(id).innerText=fBRL(Math.max(ger,0))); ['tot-desc','print-tot-desc'].forEach(id=>document.getElementById(id).innerText='- '+fBRL(des)); ['tot-acres','print-tot-acres'].forEach(id=>document.getElementById(id).innerText='+ '+fBRL(acr)); ['tot-frete','print-tot-frete'].forEach(id=>document.getElementById(id).innerText='+ '+fBRL(fre));
-        ['row-desc','print-row-desc'].forEach(id=>document.getElementById(id).style.display=des>0?'flex':'none'); ['row-acres','print-row-acres'].forEach(id=>document.getElementById(id).style.display=acr>0?'flex':'none'); ['row-frete','print-row-frete'].forEach(id=>document.getElementById(id).style.display=fre>0?'flex':'none');
+        const acr = parseFloat($('valor-acrescimo').value)||0, fre = parseFloat($('valor-frete').value)||0, ger = (tImp + tMol + acr + fre) - des;
+        
+        ['tot-impressao','print-tot-impressao'].forEach(id=>$(id).innerText=fBRL(tImp)); ['tot-moldura','print-tot-moldura'].forEach(id=>$(id).innerText=fBRL(tMol)); 
+        ['tot-geral','print-tot-geral'].forEach(id=>$(id).innerText=fBRL(Math.max(ger,0))); ['tot-desc','print-tot-desc'].forEach(id=>$(id).innerText='- '+fBRL(des)); 
+        ['tot-acres','print-tot-acres'].forEach(id=>$(id).innerText='+ '+fBRL(acr)); ['tot-frete','print-tot-frete'].forEach(id=>$(id).innerText='+ '+fBRL(fre));
+        
+        ['row-desc','print-row-desc'].forEach(id=>$(id).style.display=des>0?'flex':'none'); 
+        ['row-acres','print-row-acres'].forEach(id=>$(id).style.display=acr>0?'flex':'none'); 
+        ['row-frete','print-row-frete'].forEach(id=>$(id).style.display=fre>0?'flex':'none');
     };
     function fBRL(v) { return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}); }
 
     window.imprimirPDF = function() {
-        if(itemsState.length===0) { alert('Adicione um item.'); return; }
+        if(itemsState.length===0) return alert('Adicione um item.');
         let wEmpty = itemsState.some(i => i.w === '' || i.h === ''); if(wEmpty && !confirm('Existem itens sem largura/altura definidos (valor R$ 0,00). Deseja imprimir assim mesmo?')) return;
-        document.getElementById('print-orcamento-num').innerText = document.getElementById('orcamento-num-input').value; const dInput = document.getElementById('orcamento-data-input').value;
-        if(dInput) { const [dp, tp] = dInput.split('T'); const [y, m, d] = dp.split('-'); document.getElementById('print-orcamento-data').innerText = `${d}/${m}/${y} ${tp}`; } else document.getElementById('print-orcamento-data').innerText = '-';
-        const fraseId = document.getElementById('frase-selecionada').value; const fr = frasesDB.find(f => f.id == fraseId); document.getElementById('quote-footer').innerText = fr ? formatarFrase(fr) : '';
+        
+        $('print-orcamento-num').innerText = $('orcamento-num-input').value; const dInput = $('orcamento-data-input').value;
+        if(dInput) { const [dp, tp] = dInput.split('T'); const [y, m, d] = dp.split('-'); $('print-orcamento-data').innerText = `${d}/${m}/${y} ${tp}`; } else $('print-orcamento-data').innerText = '-';
+        
+        const fraseId = $('frase-selecionada').value, fr = frasesDB.find(f => f.id == fraseId); $('quote-footer').innerText = fr ? formatarFrase(fr) : '';
         syncClientData(); updateAll(); 
-        const originalTitle = document.title; const nomeCliente = document.getElementById('cliente-nome').value.trim(); const nomeArquivo = nomeCliente ? `Orcamento-${nomeCliente.replace(/\s+/g, '-')}-CREVO` : `Orcamento-Cliente-CREVO`; document.title = nomeArquivo;
+        
+        const originalTitle = document.title, nomeCliente = $('cliente-nome').value.trim(), nomeArquivo = nomeCliente ? `Orcamento-${nomeCliente.replace(/\s+/g, '-')}-CREVO` : `Orcamento-Cliente-CREVO`; document.title = nomeArquivo;
+        
         setTimeout(() => {
             window.print();
             window.addEventListener('afterprint', function onAfterPrint() { document.title = originalTitle; window.removeEventListener('afterprint', onAfterPrint); });
