@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Orçamento - CREVO Fine Art</title>
     
-    <link rel="shortcut icon" href="favicon_claro.png" type="image/png">
-    <link rel="apple-touch-icon" href="favicon_claro.png">
+    <link rel="shortcut icon" href="favicon_claro.svg" type="image/png">
+    <link rel="apple-touch-icon" href="favicon_claro.svg">
     <link rel="icon" href="favicon_claro.png" media="(prefers-color-scheme: light)" type="image/png">
     <link rel="icon" href="favicon_noturno.png" media="(prefers-color-scheme: dark)" type="image/png">
 
@@ -50,7 +50,7 @@
             --accent-hover: #3A3A3C;
             --danger-color: #FF3B30; /* Vermelho iOS */
             --success-color: #34C759; /* Verde iOS */
-            --font-heading: 'TAN-Buster', serif;
+            --font-heading: 'Manrope', sans-serif;
             --font-body: 'Manrope', sans-serif;
             --radius: 12px; /* Arredondamento padrão Apple */
         }
@@ -64,9 +64,9 @@
             line-height: 1.5;
             padding: 20px;
         }
-        h1, h2, h3 { font-family: var(--font-heading); font-weight: normal; }
+        h1, h2, h3 { font-family: var(--font-heading); font-weight: bold; text-transform: uppercase; }
         
-        h1 { font-size: 2.2rem; margin-bottom: 10px; text-transform: none; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; }
         h2 { font-size: 1.5rem; margin-bottom: 15px; } /* Linha cinza removida */
 
         /* --- LAYOUT GERAL --- */
@@ -266,7 +266,7 @@
         /* --- MELHORIAS MOBILE (ESTÉTICA NATIVA APP APPLE) --- */
         @media (max-width: 768px) {
             body { padding: 10px; }
-            h1 { font-size: 1.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 5px; margin-left: 0;}
+            h1 { font-size: 1.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 5px; margin-left: 10px;}
             h2 { font-size: 1.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 8px; }
             p { font-size: 0.95rem; }
             
@@ -714,7 +714,7 @@
             <div>
                 <label>Telefone</label>
                 <div style="display: flex; gap: 8px;">
-                    <select id="cliente-ddi" style="width: 90px; flex-shrink: 0;" onchange="syncClientData(); aplicarMascaraTelefone({target: document.getElementById('cliente-tel')})">
+                    <select id="cliente-ddi" style="width: 85px; flex-shrink: 0;" onchange="syncClientData(); aplicarMascaraTelefone({target: document.getElementById('cliente-tel')})">
                         <option value="+55">🇧🇷 +55</option>
                         <option value="+1">🇺🇸 +1</option>
                         <option value="+351">🇵🇹 +351</option>
@@ -1013,7 +1013,72 @@
         carregarFrasesSelect();
         renderCategoriaSelects();
         adicionarItem(); 
+        sincronizarDadosServidor();
     });
+
+    // --- SINCRONIZAÇÃO COM GITHUB (NUVEM) ---
+    async function sincronizarDadosServidor() {
+        const ts = new Date().getTime(); // Cache buster para forçar download do arquivo mais novo
+
+        try {
+            // 1. Sincronizar Preços e Cupons (GitHub vira a fonte da verdade)
+            let resPrecos = await fetch(`./backup/crevo_precos_backup.json?v=${ts}`);
+            if (resPrecos.ok) {
+                let data = await resPrecos.json();
+                if (data.precos) precosDB = data.precos;
+                else if (data.materiais) precosDB = data;
+                
+                if (data.cupons) cuponsDB = data.cupons;
+                
+                localStorage.setItem('crevo_prices', JSON.stringify(precosDB));
+                localStorage.setItem('crevo_cupons', JSON.stringify(cuponsDB));
+            }
+
+            // 2. Sincronizar Frases (Mescla as do GitHub com as que você já criou localmente)
+            let resFrases = await fetch(`./backup/crevo_frases_backup.json?v=${ts}`);
+            if (resFrases.ok) {
+                let remoteFrases = await resFrases.json();
+                let idsLocais = frasesDB.map(f => f.id);
+                let novasFrases = remoteFrases.filter(f => !idsLocais.includes(f.id));
+                if (novasFrases.length > 0) {
+                    frasesDB = [...frasesDB, ...novasFrases];
+                    localStorage.setItem('crevo_quotes', JSON.stringify(frasesDB));
+                    carregarFrasesSelect();
+                }
+            }
+
+            // 3. Sincronizar Clientes (Mescla clientes do GitHub com os locais)
+            let resClientes = await fetch(`./backup/crevo_clientes_backup.json?v=${ts}`);
+            if (resClientes.ok) {
+                let remoteClientes = await resClientes.json();
+                let idsLocais = clientesDB.map(c => c.id);
+                let novosClientes = remoteClientes.filter(c => !idsLocais.includes(c.id));
+                
+                if (novosClientes.length > 0) {
+                    clientesDB = [...clientesDB, ...novosClientes];
+                    
+                    // Adiciona categorias novas se vierem no pacote
+                    novosClientes.forEach(nc => {
+                        if (nc.categoria && !categoriasDB.includes(nc.categoria)) {
+                            categoriasDB.push(nc.categoria);
+                        }
+                    });
+                    
+                    categoriasDB.sort();
+                    localStorage.setItem('crevo_categorias', JSON.stringify(categoriasDB));
+                    localStorage.setItem('crevo_clientes', JSON.stringify(clientesDB));
+                    renderCategoriaSelects();
+                    renderCategoryFilters();
+                }
+            }
+
+            // Atualiza os valores da tela após carregar os preços atualizados
+            updateAll();
+
+        } catch (err) {
+            console.log("Sistema rodando 100% offline ou arquivos não encontrados na pasta /backup/.");
+        }
+    }
 
     // --- PROPOSTA ---
     function gerarNumeroOrcamento() {
@@ -1683,7 +1748,7 @@
         alert("Preços atualizados com sucesso!");
     };
 
-    window.exportarPrecos = function() { baixarArquivo(JSON.stringify({precos: precosDB, cupons: cuponsDB}), "crevo_sistema_backup.json", "text/json;charset=utf-8;"); };
+    window.exportarPrecos = function() { baixarArquivo(JSON.stringify({precos: precosDB, cupons: cuponsDB}), "crevo_precos_backup.json", "text/json;charset=utf-8;"); };
     window.importarPrecos = function(e) {
         const file = e.target.files[0]; if (!file) return;
         const reader = new FileReader();
@@ -2060,6 +2125,5 @@
         }, 300);
     };
 </script>
-<br><br>
 </body>
 </html>
